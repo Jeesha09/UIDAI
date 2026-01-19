@@ -5,6 +5,8 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from backend_logic import ExecutiveSummaryEngine, AadhaarAnalyticsEngine
+from data_preprocessing import preprocess_dataframe
+import trends_analytics
 
 # ==========================================
 # 1. PAGE CONFIGURATION
@@ -55,17 +57,14 @@ def load_data():
         df_list = []
         for file in file_paths:
             try:
-                # Read CSV
-                temp_df = pd.read_csv(file)
+                # Read CSV without parsing dates here (preprocessing will handle it)
+                temp_df = pd.read_csv(file, low_memory=False)
                 df_list.append(temp_df)
             except Exception as e:
                 print(f"Skipping bad file: {file}") # Print to console, not Streamlit
         
         if df_list:
             full_df = pd.concat(df_list, ignore_index=True)
-            # Ensure date column is correct
-            if 'date' in full_df.columns:
-                full_df['date'] = pd.to_datetime(full_df['date'], format='%Y-%m-%d', errors='coerce')
             return full_df
         else:
             return pd.DataFrame()
@@ -75,28 +74,72 @@ def load_data():
     df_demo = read_all_csvs_in_folder("api_data_aadhar_demographic")
     df_enrol = read_all_csvs_in_folder("api_data_aadhar_enrolment")
     
+    # Apply preprocessing to clean and normalize data
+    if not df_bio.empty:
+        df_bio = preprocess_dataframe(df_bio, "Biometric")
+    if not df_demo.empty:
+        df_demo = preprocess_dataframe(df_demo, "Demographic")
+    if not df_enrol.empty:
+        df_enrol = preprocess_dataframe(df_enrol, "Enrollment")
+    
     return df_enrol, df_bio, df_demo
 
 # ==========================================
-# CALLING THE FUNCTION (The UI part goes here)
+# CALLING THE FUNCTION & PRE-GENERATE ALL CHARTS
 # ==========================================
+@st.cache_data
+def preload_all_charts(_df_enrol, _df_bio, _df_demo):
+    """Pre-generate all visualizations"""
+    charts = {}
+    
+    print("Pre-generating charts...")
+    
+    # Data for Streamlit native charts
+    charts['forecast_data'] = trends_analytics.get_forecast_data(_df_enrol, days_forward=30)
+    print("  ✓ Forecast data")
+    
+    charts['dow_data'] = trends_analytics.get_dow_data(_df_enrol)
+    print("  ✓ Day-of-week data")
+    
+    charts['growth_data'] = trends_analytics.get_growth_data(_df_enrol, top_n=10)
+    print("  ✓ Growth trajectory data")
+    
+    # Plotly charts for complex visualizations
+    charts['seasonal_radar'] = trends_analytics.create_seasonal_radar(_df_enrol)
+    print("  ✓ Seasonal radar")
+    
+    charts['network_graph'] = trends_analytics.create_network_graph(_df_enrol, top_n=25)
+    print("  ✓ Network graph")
+    
+    print("All charts ready!")
+    return charts
+
 try:
-    with st.spinner('Loading millions of rows... This might take a minute...'):
-        df_enrol, df_bio, df_demo = load_data()
-        
-    # Show success message only after loading is done
-    st.toast(f"Data Loaded: {len(df_enrol)} Enrolments", icon="✅")
+    # Create progress bar
+    progress_text = "Loading data and pre-generating visualizations..."
+    progress_bar = st.progress(0, text=progress_text)
+    
+    # Load data (20% progress)
+    progress_bar.progress(20, text="Loading CSV files...")
+    df_enrol, df_bio, df_demo = load_data()
+    
+    # Initialize engines (40% progress)
+    progress_bar.progress(40, text="Initializing analytics engines...")
+    exec_engine = ExecutiveSummaryEngine(df_enrol, df_bio, df_demo)
+    adv_engine = AadhaarAnalyticsEngine(df_enrol, df_bio, df_demo)
+    
+    # Pre-generate all charts (60-100% progress)
+    progress_bar.progress(60, text="Pre-generating all visualizations...")
+    preloaded_charts = preload_all_charts(df_enrol, df_bio, df_demo)
+    
+    progress_bar.progress(100, text="Complete!")
+    progress_bar.empty()  # Remove progress bar
+    
+    st.toast(f"✅ Ready! {len(df_enrol):,} enrollments loaded", icon="🎉")
 
 except Exception as e:
     st.error(f"Critical Error loading data: {e}")
     st.stop()
-
-# Load the data into variables
-df_enrol, df_bio, df_demo = load_data()
-
-# Initialize the Backend Engines
-exec_engine = ExecutiveSummaryEngine(df_enrol, df_bio, df_demo)
-adv_engine = AadhaarAnalyticsEngine(df_enrol, df_bio, df_demo)
 
 # ==========================================
 # 3. SIDEBAR NAVIGATION
@@ -132,7 +175,8 @@ if page == "🏠 Executive Summary":
     # Calculate Data
     early_warning = exec_engine.get_early_warning_system()
     stagnation = exec_engine.get_stagnation_detection()
-    total_vol = df_enrol['age_0_5'].sum() + df_enrol['age_18_greater'].sum()
+    age_cols = [col for col in df_enrol.columns if col.startswith('age_')]
+    total_vol = df_enrol[age_cols].sum().sum()
     
     # Display Big Metrics
     col1, col2, col3 = st.columns(3)
@@ -276,34 +320,196 @@ elif page == "🚚 Operations & Logistics":
 # --- PAGE 3: TRENDS ---
 elif page == "📈 Trends & Forecasting":
     st.title("📈 Trends & Predictive Analytics")
+    st.markdown(f"*Analyzing {len(df_enrol):,} enrollment records across {df_enrol['district'].nunique()} districts*")
     
-    districts = df_enrol['district'].unique()
-    selected_dist = st.selectbox("Select District to Forecast", districts)
-    
-    # 7A: Prophet Forecast
-    st.subheader("🔮 30-Day Volume Forecast")
-    
-    forecast_df = adv_engine.get_forecast_prophet(selected_dist)
-    
-    fig_forecast = go.Figure()
-    fig_forecast.add_trace(go.Scatter(x=forecast_df['ds'], y=forecast_df['yhat'], mode='lines', name='Prediction'))
-    fig_forecast.add_trace(go.Scatter(x=forecast_df['ds'], y=forecast_df['yhat_upper'], mode='lines', line=dict(width=0), showlegend=False))
-    fig_forecast.add_trace(go.Scatter(x=forecast_df['ds'], y=forecast_df['yhat_lower'], mode='lines', line=dict(width=0), fill='tonexty', name='Confidence Interval'))
-    
-    st.plotly_chart(fig_forecast, use_container_width=True)
-    
-    # Mine #4: Ripple Effect
+    # 30-Day Enrollment Forecast
     st.markdown("---")
-    st.subheader("🌊 Ripple Effect Analysis")
-    st.write("Does activity in Mumbai trigger activity in Bengaluru?")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("📊 30-Day Enrollment Forecast")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - **Blue Line (Historical):** Actual enrollment data from past records, showing real trends and patterns
+            - **Orange Line (Forecast):** Prophet model predictions for the next 30 days based on historical patterns
+            
+            **Key Insights:**
+            - The model detects **weekly seasonality** (enrollment patterns repeat each week)
+            - **Yearly trends** capture seasonal variations (academic cycles, festivals, policy changes)
+            - **Confidence intervals** (shaded area) show prediction uncertainty - wider bands = less certainty
+            
+            **Action Items:**
+            - **Sharp drops** in forecast → Plan staff reduction or investigate causes
+            - **Steep increases** → Allocate additional resources, prepare for capacity expansion
+            - **Consistent patterns** → Optimize staffing schedules to match predicted demand
+            - **Irregular spikes** → Investigate for policy impacts or external events
+            """)
     
-    ripple = adv_engine.get_ripple_effect('Mumbai', 'Bengaluru')
+    forecast_data = preloaded_charts.get('forecast_data', pd.DataFrame())
     
-    if ripple.get('is_significant'):
-        st.success(f"✅ Significant Causal Link Detected! (P-Value: {ripple['p_value']:.4f})")
-        st.markdown("**Insight:** Spikes in Mumbai reliably predict spikes in Bengaluru 3 days later.")
+    if not forecast_data.empty:
+        # Create Plotly chart with interactive legend
+        fig_forecast = go.Figure()
+        fig_forecast.add_trace(go.Scatter(
+            x=forecast_data.index,
+            y=forecast_data['Historical'],
+            mode='lines',
+            name='Historical',
+            line=dict(color='#1f77b4', width=2)
+        ))
+        fig_forecast.add_trace(go.Scatter(
+            x=forecast_data.index,
+            y=forecast_data['Forecast'],
+            mode='lines',
+            name='Forecast',
+            line=dict(color='#ff7f0e', width=2)
+        ))
+        fig_forecast.update_layout(
+            height=500,
+            xaxis_title='Date',
+            yaxis_title='Enrollment Count',
+            hovermode='x unified',
+            legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1)
+        )
+        st.plotly_chart(fig_forecast, use_container_width=True)
     else:
-        st.warning("No significant causal link detected between these districts.")
+        st.warning("⚠️ Insufficient historical data for forecasting. Need at least 2 days of enrollment records.")
+    
+    # Seasonal Trends
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("🌡️ Seasonal Enrollment Patterns: North vs South India")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - Monthly enrollment volumes plotted as a **radar chart** to reveal seasonal cycles
+            - **North vs South comparison** highlights regional behavioral differences
+            
+            **Key Insights:**
+            - **Peak months** indicate optimal times for enrollment drives or awareness campaigns
+            - **Low months** may correlate with agricultural seasons, festivals, or extreme weather
+            - **Regional gaps** show where targeted interventions are needed
+            - **Symmetry** suggests predictable patterns; **asymmetry** indicates external factors
+            
+            **Action Items:**
+            - Schedule mobile van drives during **high-enrollment months** for maximum impact
+            - Plan maintenance and training during **low-activity periods**
+            - Investigate **regional disparities** - are Southern states facing unique barriers?
+            - Align policy announcements with **peak engagement months**
+            """)
+    
+    st.plotly_chart(preloaded_charts['seasonal_radar'], use_container_width=True)
+    
+    # Day-of-Week Patterns
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("📅 Weekly Enrollment Activity: Rural vs Urban Areas")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - Daily enrollment patterns across the week for **Rural (Green)** vs **Urban (Red)** areas
+            - Reveals behavioral differences between demographics
+            
+            **Key Insights:**
+            - **Weekday peaks** in urban areas → Office workers enrolling during lunch breaks
+            - **Weekend spikes** in rural areas → Farmers/laborers free on weekends
+            - **Monday dips** (if present) → Post-weekend administrative delays
+            - **Friday surges** → "Get it done before weekend" mentality
+            
+            **Action Items:**
+            - **Urban centers:** Extend operating hours on weekdays, add lunch-hour slots
+            - **Rural areas:** Boost Saturday/Sunday staffing, deploy mobile vans on weekends
+            - **Minimize wait times** on high-volume days to prevent drop-offs
+            - **Optimize staff rosters** to match daily demand curves
+            """)
+    
+    dow_data = preloaded_charts.get('dow_data', pd.DataFrame())
+    if not dow_data.empty:
+        st.bar_chart(dow_data, height=500, color=["#2ca02c", "#d62728"])
+    else:
+        st.warning("⚠️ Day-of-week data not available")
+    
+    # Growth Trajectories
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("📈 Cumulative Growth Trajectories: Top Performing Districts")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - **Cumulative enrollment growth** over time for highest-volume districts
+            - Steeper slopes = faster growth rates; flat lines = stagnation
+            
+            **Key Insights:**
+            - **Leading districts** set benchmarks - study their success factors
+            - **Plateaus** indicate market saturation or policy barriers
+            - **Diverging lines** show widening inequality - some districts left behind
+            - **Parallel lines** suggest similar external factors (state-level policies)
+            
+            **Action Items:**
+            - **Replicate best practices** from top-performing districts
+            - **Investigate lagging districts** - infrastructure gaps? Awareness issues?
+            - **Benchmark targets** against top-quartile performers
+            - **Monitor inflection points** - sudden slope changes indicate events worth investigating
+            """)
+    
+    growth_data = preloaded_charts.get('growth_data', pd.DataFrame())
+    if not growth_data.empty:
+        # Create Plotly chart with interactive legend
+        fig_growth = go.Figure()
+        for district in growth_data.columns:
+            fig_growth.add_trace(go.Scatter(
+                x=growth_data.index,
+                y=growth_data[district],
+                mode='lines',
+                name=district,
+                line=dict(width=2)
+            ))
+        fig_growth.update_layout(
+            height=500,
+            xaxis_title='Date',
+            yaxis_title='Cumulative Enrollment',
+            hovermode='x unified',
+            legend=dict(orientation='v', yanchor='top', y=1, xanchor='left', x=1.02)
+        )
+        st.plotly_chart(fig_growth, use_container_width=True)
+    else:
+        st.warning("⚠️ Growth trajectory data not available")
+    
+    # Network Graph
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("🌐 District Correlation Network: Enrollment Pattern Relationships")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - **Network nodes** = Districts with similar enrollment timing patterns
+            - **Edges (connections)** = Strong correlation (>0.7) in enrollment trends
+            - **Node size** = Number of connections (centrality in the network)
+            
+            **Key Insights:**
+            - **Clusters** reveal districts influenced by shared factors (migration corridors, economic zones)
+            - **Hub nodes** (large, many connections) are influence centers - policy changes here ripple outward
+            - **Isolated nodes** operate independently - unique local factors dominate
+            - **Connected pairs** may share borders, economic ties, or administrative practices
+            
+            **Action Items:**
+            - **Pilot programs** in hub districts for maximum spillover effect
+            - **Investigate clusters** - Are they sharing staff? Experiencing common events?
+            - **Monitor synchronized dips** - Could indicate coordinated fraud or systemic issues
+            - **Leverage connections** - Success in one district can be promoted to its network neighbors
+            """)
+    
+    st.plotly_chart(preloaded_charts['network_graph'], use_container_width=True)
+
 
 
 # --- PAGE 4: DEMOGRAPHICS ---

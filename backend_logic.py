@@ -6,6 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from statsmodels.tsa.stattools import grangercausalitytests
 from prophet import Prophet
 import math
+from data_preprocessing import preprocess_dataframe
 
 # ==========================================
 # CLASS 1: Executive Summary Engine
@@ -112,10 +113,13 @@ class AadhaarAnalyticsEngine:
         self.df_bio = df_biometric
         self.df_demo = df_demographic
         
-        # Ensure date format
-        self.df_enrol['date'] = pd.to_datetime(self.df_enrol['date'])
-        self.df_bio['date'] = pd.to_datetime(self.df_bio['date'])
-        self.df_demo['date'] = pd.to_datetime(self.df_demo['date'])
+        # Ensure date format (preprocessing should have already done this, but double-check)
+        if 'date' in self.df_enrol.columns:
+            self.df_enrol['date'] = pd.to_datetime(self.df_enrol['date'], errors='coerce')
+        if 'date' in self.df_bio.columns:
+            self.df_bio['date'] = pd.to_datetime(self.df_bio['date'], errors='coerce')
+        if 'date' in self.df_demo.columns:
+            self.df_demo['date'] = pd.to_datetime(self.df_demo['date'], errors='coerce')
 
     def get_center_of_gravity(self, district_name):
         district_data = self.df_bio[self.df_bio['district'] == district_name].copy()
