@@ -13,23 +13,119 @@ import trends_analytics
 # ==========================================
 st.set_page_config(
     page_title="Aadhaar Analytics Command Center",
-    page_icon="🇮🇳",
+    page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for a professional look
+# Dark Mode Styling
 st.markdown("""
 <style>
-    .metric-card {
-        background-color: #f0f2f6;
+    /* Dark Mode Styling */
+    :root {
+        --bg-primary: #0e1117;
+        --bg-secondary: #1a1d29;
+        --text-primary: #fafafa;
+        --text-secondary: #a9b1c0;
+        --accent-color: #4a9eff;
+        --border-color: #2d3139;
+        --card-bg: #1a1d29;
+        --hover-bg: #252830;
+    }
+    
+    .stApp {
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+    }
+    
+    .main .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--text-primary) !important;
+        font-weight: 600;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .stMetric {
+        background-color: var(--card-bg);
         padding: 20px;
         border-radius: 10px;
-        text-align: center;
-        border-left: 5px solid #ff4b4b;
+        border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
     }
-    .stMetric {
-        text-align: center;
+    
+    .stMetric:hover {
+        border-color: var(--accent-color);
+        box-shadow: 0 4px 12px rgba(74, 158, 255, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    [data-testid="stMarkdownContainer"] {
+        color: var(--text-secondary);
+    }
+    
+    .stDataFrame {
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    
+    .stButton > button {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 0.5rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .stButton > button:hover {
+        background-color: #3d8ce8;
+        box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+    }
+    
+    hr {
+        border: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, var(--border-color), transparent);
+        margin: 2rem 0;
+    }
+    
+    .css-1d391kg, .css-1v0mbdj {
+        background-color: var(--card-bg);
+        border-radius: 8px;
+    }
+    
+    /* Sidebar Styling */
+    [data-testid="stSidebar"] {
+        background-color: var(--bg-secondary);
+    }
+    
+    /* Radio Button Styling */
+    .stRadio > label {
+        color: var(--text-primary);
+    }
+    
+    /* Popover Button Fix - Ensure icons display horizontally */
+    [data-testid="stPopover"] button {
+        min-width: 40px !important;
+        padding: 0.5rem !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        writing-mode: horizontal-tb !important;
+    }
+    
+    [data-testid="stPopover"] button p {
+        display: inline !important;
+        writing-mode: horizontal-tb !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -144,33 +240,35 @@ except Exception as e:
 # ==========================================
 # 3. SIDEBAR NAVIGATION
 # ==========================================
-st.sidebar.title("UIDAI Analytics")
+st.sidebar.title("UIDAI Analytics Dashboard")
 st.sidebar.image("https://upload.wikimedia.org/wikipedia/en/c/cf/Aadhaar_Logo.svg", width=150)
 
-page = st.sidebar.radio("Navigate Module:", [
-    "🏠 Executive Summary",
-    "🚚 Operations & Logistics",
-    "📈 Trends & Forecasting",
-    "👥 Demographics & Policy",
-    "🛡️ Security & Integrity"
+st.sidebar.markdown("---")
+
+page = st.sidebar.radio("Navigate to Module:", [
+    "Executive Summary",
+    "Operations & Logistics",
+    "Trends & Forecasting",
+    "Demographics & Policy",
+    "Security & Integrity"
 ])
 
 st.sidebar.markdown("---")
-st.sidebar.info("System Status: **Online** 🟢")
+st.sidebar.info("System Status: **Online**")
 
 # ==========================================
 # 4. PAGE LOGIC
 # ==========================================
 
 # --- PAGE 1: EXECUTIVE SUMMARY ---
-if page == "🏠 Executive Summary":
-    st.title("🏠 Executive Command Center")
-    st.markdown("High-level overview of ecosystem health and critical alerts.")
+if page == "Executive Summary":
+    st.title("Executive Command Center")
+    st.markdown("**High-level overview of ecosystem health and critical alerts**")
     
     # ---------------------------------------------------------
     # SECTION 1: CRITICAL ALERTS (Metrics + Popups)
     # ---------------------------------------------------------
-    st.subheader("🚨 Critical Alerts")
+    st.subheader("Critical Alerts")
     
     # Calculate Data
     early_warning = exec_engine.get_early_warning_system()
@@ -185,7 +283,7 @@ if page == "🏠 Executive Summary":
         st.metric("Critical Decline Districts", early_warning['metric_value'], delta="-5%")
         
         # THE "VIEW ALL" POPUP BUTTON
-        with st.popover("📉 View All Declining Districts"):
+        with st.popover("View All Declining Districts"):
             st.markdown("### Full List of Critical Districts")
             st.write("Districts with >20% drop in enrollment volume.")
             # displaying the dataframe makes it scrollable automatically
@@ -199,7 +297,7 @@ if page == "🏠 Executive Summary":
         st.metric("Stagnant Pincodes (30 Days)", stagnation['total_stagnant'], delta_color="inverse")
         
         # THE "VIEW ALL" POPUP BUTTON
-        with st.popover("🛑 View All Stagnant Pincodes"):
+        with st.popover("View All Stagnant Pincodes"):
             st.markdown("### Full List of Inactive Pincodes")
             st.write("Pincodes with zero activity in the last 30 days.")
             if stagnation['pincode_list']:
@@ -219,22 +317,22 @@ if page == "🏠 Executive Summary":
     # ---------------------------------------------------------
     # SECTION 2: LEADERBOARDS (Keeping the Top 5 Tables)
     # ---------------------------------------------------------
-    st.subheader("🏆 Performance Leaderboard")
+    st.subheader("Performance Leaderboard")
     benchmarks = exec_engine.get_peer_benchmarking()
     
     c1, c2 = st.columns(2)
     with c1:
-        st.markdown("### ✅ Top 5 Performing Districts")
+        st.markdown("### Top 5 Performing Districts")
         st.dataframe(benchmarks['top_performers'], hide_index=True, use_container_width=True)
     with c2:
-        st.markdown("### ⚠️ Bottom 5 Districts (Needs Support)")
+        st.markdown("### Bottom 5 Districts (Needs Support)")
         st.dataframe(benchmarks['bottom_performers'], hide_index=True, use_container_width=True)
 
     # ---------------------------------------------------------
     # SECTION 3: MAP (Your India Map)
     # ---------------------------------------------------------
     st.markdown("---")
-    st.subheader("📍 Location Archetypes (Cluster Map)")
+    st.subheader("Location Archetypes (Cluster Map)")
     
     clusters = exec_engine.get_location_clusters()
     
@@ -269,64 +367,201 @@ if page == "🏠 Executive Summary":
         st.warning("Not enough data to generate clusters.")
 
 # --- PAGE 2: OPERATIONS ---
-elif page == "🚚 Operations & Logistics":
-    st.title("🚚 Operations & Resource Planning")
+elif page == "Operations & Logistics":
+    st.title("Operations & Resource Planning")
+    st.markdown("**Comprehensive operational intelligence for infrastructure allocation and capacity optimization**")
     
-    # Select District
-    districts = df_enrol['district'].unique()
-    selected_dist = st.selectbox("Select District for Analysis", districts)
-    
-    # Mine #2: Mobile Van Solver
-    st.subheader(f"📍 Recommended Mobile Van Location for {selected_dist}")
-    cog_data = adv_engine.get_center_of_gravity(selected_dist)
-    
-    if cog_data:
-        optimal = cog_data['optimal_location']
-        col1, col2 = st.columns([1, 3])
-        with col1:
-            st.info(f"**Optimal Coordinates:**\n\nLat: {optimal[0]:.4f}\nLong: {optimal[1]:.4f}")
-            st.markdown("*Deploy van here to minimize citizen travel time.*")
-        with col2:
-            # Simple map visualization
-            map_data = pd.DataFrame({
-                'lat': [optimal[0]], 
-                'lon': [optimal[1]], 
-                'type': ['Recommended New Center']
-            })
-            st.map(map_data)
-    
+    # VISUALIZATION 1: BCG Service Strain Matrix
     st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("Service Strain Matrix: Kit Allocation vs Staff Planning")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - **X-axis:** New enrollment demand (kit requirements)
+            - **Y-axis:** Update request load (staff requirements)
+            - **Quadrants guide resource allocation decisions**
+            
+            **Action Items:**
+            - **Top-Right (Warzone):** Need both kits + staff
+            - **Top-Left (Hub):** Maintenance-heavy, allocate experienced staff
+            - **Bottom-Right (Nursery):** Growth areas, deploy kits & trainers
+            - **Bottom-Left (Dormant):** Low priority, monitor only
+            """)
     
-    # Mine #3: Service Strain Matrix
-    st.subheader("🏗️ Service Strain Matrix (Growth vs Load)")
-    matrix_df = adv_engine.get_service_strain_matrix()
+    bcg_data = adv_engine.get_bcg_matrix_data()
+    if not bcg_data.empty:
+        fig_bcg = px.scatter(
+            bcg_data, 
+            x='total_enrollments', 
+            y='total_updates',
+            text='district',
+            labels={'total_enrollments': 'New Enrollment Demand', 'total_updates': 'Update Request Load'},
+            template="plotly_white",
+            height=600
+        )
+        fig_bcg.update_traces(textposition='top center', textfont_size=8)
+        fig_bcg.add_hline(y=bcg_data['total_updates'].median(), line_dash="dot", 
+                         annotation_text="High Staff Needed", line_color="red")
+        fig_bcg.add_vline(x=bcg_data['total_enrollments'].median(), line_dash="dot", 
+                         annotation_text="High Kits Needed", line_color="blue")
+        st.plotly_chart(fig_bcg, use_container_width=True)
+    else:
+        st.warning("⚠️ Insufficient data for BCG matrix")
     
-    fig_matrix = px.scatter(
-        matrix_df, 
-        x="new_demand", 
-        y="maintenance_load", 
-        color="category",
-        hover_name="district",
-        title="Infrastructure Planning Matrix",
-        labels={"new_demand": "New Enrollments (Growth)", "maintenance_load": "Update Requests (Churn)"}
-    )
-    # Add quadrants lines
-    fig_matrix.add_vline(x=matrix_df['new_demand'].median(), line_dash="dash", line_color="gray")
-    fig_matrix.add_hline(y=matrix_df['maintenance_load'].median(), line_dash="dash", line_color="gray")
+    # VISUALIZATION 2: Mobile Van Priority Solver
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("Mobile Van Solver: Recommended Deployment Spots")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - **Red points:** High-priority areas needing mobile van service
+            - **Blue points:** Areas adequately served by fixed centers
+            - **Size:** Total activity volume
+            
+            **Action Items:**
+            - Deploy mobile vans to **red-flagged pincodes**
+            - These areas have high update demand but limited fixed infrastructure
+            - Prioritize by bubble size (larger = more urgent)
+            """)
     
-    st.plotly_chart(fig_matrix, use_container_width=True)
+    van_data = adv_engine.get_mobile_van_priority_data()
+    if not van_data.empty:
+        fig_van = px.scatter(
+            van_data, 
+            x='district', 
+            y='total_updates',
+            color='van_priority',
+            size='total_activity',
+            hover_data=['pincode'],
+            labels={'total_updates': 'Update Requests', 'district': 'District'},
+            color_discrete_map={True: 'red', False: 'royalblue'},
+            template="plotly_white",
+            height=600
+        )
+        fig_van.update_xaxes(tickangle=45)
+        st.plotly_chart(fig_van, use_container_width=True)
+    else:
+        st.warning("No mobile van priority data available")
+    
+    # VISUALIZATION 3: Center Productivity Rankings
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("Top 20 Center Productivity (Activity Volume)")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - Highest-performing centers by total requests handled
+            - Colored by district for regional patterns
+            
+            **Action Items:**
+            - Study **best practices** from top centers
+            - Allocate additional resources to maintain performance
+            - Identify if multiple top centers cluster in same district
+            """)
+    
+    prod_data = adv_engine.get_center_productivity_data(top_n=20)
+    if not prod_data.empty:
+        prod_data['pincode_label'] = prod_data['pincode'].astype(str)
+        fig_prod = px.bar(
+            prod_data, 
+            x='pincode_label', 
+            y='total_activity',
+            color='district',
+            labels={'total_activity': 'Total Requests Handled', 'pincode_label': 'Pincode/Center ID'},
+            template="plotly_white",
+            height=500
+        )
+        fig_prod.update_xaxes(tickangle=45)
+        st.plotly_chart(fig_prod, use_container_width=True)
+    else:
+        st.warning("No center productivity data available")
+    
+    # VISUALIZATION 4: Weekly Capacity Utilization Heatmap
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("Weekly Capacity Utilization: Load Distribution")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - Average activity levels across days of the week
+            - Darker colors = higher load
+            
+            **Action Items:**
+            - **Peak days:** Increase staffing
+            - **Low days:** Schedule maintenance, training
+            - Optimize shift schedules to match demand curve
+            """)
+    
+    weekly_data = adv_engine.get_weekly_capacity_data()
+    if not weekly_data.empty:
+        fig_heat = px.imshow(
+            [weekly_data['total_activity'].values],
+            x=weekly_data['day_of_week'].values,
+            y=['Avg Activity'],
+            color_continuous_scale='Viridis',
+            labels={'color': 'Activity Level'},
+            template="plotly_white",
+            height=300
+        )
+        st.plotly_chart(fig_heat, use_container_width=True)
+    else:
+        st.warning("No weekly capacity data available")
+    
+    # VISUALIZATION 5: Growth Velocity Tracking
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("Enrollment Growth Velocity: Top 5 Districts")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - Daily enrollment trends for highest-volume districts
+            - Shows momentum and growth acceleration
+            
+            **Action Items:**
+            - **Steep slopes:** Fast-growing districts need urgent resource scaling
+            - **Plateaus:** Investigate saturation or operational bottlenecks
+            - **Dips:** Identify and address sudden drops immediately
+            """)
+    
+    velocity_data = adv_engine.get_growth_velocity_data(top_n=5)
+    if not velocity_data.empty:
+        fig_vel = px.line(
+            velocity_data, 
+            x='date', 
+            y='total_enrollments',
+            color='district',
+            labels={'total_enrollments': 'Enrollment Volume', 'date': 'Date'},
+            template="plotly_white",
+            height=500
+        )
+        fig_vel.update_traces(line_shape='spline')
+        st.plotly_chart(fig_vel, use_container_width=True)
+    else:
+        st.warning("⚠️ No growth velocity data available")
 
 
 # --- PAGE 3: TRENDS ---
-elif page == "📈 Trends & Forecasting":
-    st.title("📈 Trends & Predictive Analytics")
-    st.markdown(f"*Analyzing {len(df_enrol):,} enrollment records across {df_enrol['district'].nunique()} districts*")
+elif page == "Trends & Forecasting":
+    st.title("Trends & Predictive Analytics")
+    st.markdown(f"**Analyzing {len(df_enrol):,} enrollment records across {df_enrol['district'].nunique()} districts**")
     
     # 30-Day Enrollment Forecast
     st.markdown("---")
     col1, col2 = st.columns([0.95, 0.05])
     with col1:
-        st.subheader("📊 30-Day Enrollment Forecast")
+        st.subheader("30-Day Enrollment Forecast")
     with col2:
         with st.popover("ℹ️"):
             st.markdown("""
@@ -380,7 +615,7 @@ elif page == "📈 Trends & Forecasting":
     st.markdown("---")
     col1, col2 = st.columns([0.95, 0.05])
     with col1:
-        st.subheader("🌡️ Seasonal Enrollment Patterns: North vs South India")
+        st.subheader("Seasonal Enrollment Patterns: North vs South India")
     with col2:
         with st.popover("ℹ️"):
             st.markdown("""
@@ -407,7 +642,7 @@ elif page == "📈 Trends & Forecasting":
     st.markdown("---")
     col1, col2 = st.columns([0.95, 0.05])
     with col1:
-        st.subheader("📅 Weekly Enrollment Activity: Rural vs Urban Areas")
+        st.subheader("Weekly Enrollment Activity: Rural vs Urban Areas")
     with col2:
         with st.popover("ℹ️"):
             st.markdown("""
@@ -438,7 +673,7 @@ elif page == "📈 Trends & Forecasting":
     st.markdown("---")
     col1, col2 = st.columns([0.95, 0.05])
     with col1:
-        st.subheader("📈 Cumulative Growth Trajectories: Top Performing Districts")
+        st.subheader("Cumulative Growth Trajectories: Top Performing Districts")
     with col2:
         with st.popover("ℹ️"):
             st.markdown("""
@@ -480,13 +715,13 @@ elif page == "📈 Trends & Forecasting":
         )
         st.plotly_chart(fig_growth, use_container_width=True)
     else:
-        st.warning("⚠️ Growth trajectory data not available")
+        st.warning("Growth trajectory data not available")
     
     # Network Graph
     st.markdown("---")
     col1, col2 = st.columns([0.95, 0.05])
     with col1:
-        st.subheader("🌐 District Correlation Network: Enrollment Pattern Relationships")
+        st.subheader("District Correlation Network: Enrollment Pattern Relationships")
     with col2:
         with st.popover("ℹ️"):
             st.markdown("""
@@ -513,8 +748,8 @@ elif page == "📈 Trends & Forecasting":
 
 
 # --- PAGE 4: DEMOGRAPHICS ---
-elif page == "👥 Demographics & Policy":
-    st.title("👥 Demographics & Inclusion Policy")
+elif page == "Demographics & Policy":
+    st.title("Demographics & Inclusion Policy")
     
     districts = df_enrol['district'].unique()
     selected_dist = st.selectbox("Select District", districts)
@@ -539,12 +774,12 @@ elif page == "👥 Demographics & Policy":
 
 
 # --- PAGE 5: SECURITY ---
-elif page == "🛡️ Security & Integrity":
-    st.title("🛡️ Security & Forensic Audit")
+elif page == "Security & Integrity":
+    st.title("Security & Forensic Audit")
     
     # Mine #1: Benford's Law
-    st.subheader("🕵️ Benford's Law Fraud Detection")
-    st.markdown("Analyzing 'Adult Enrollment' digits to detect synthetic/fake data entry.")
+    st.subheader("Benford's Law Fraud Detection")
+    st.markdown("**Analyzing 'Adult Enrollment' digits to detect synthetic/fake data entry**")
     
     districts = df_enrol['district'].unique()
     target_dist = st.selectbox("Select District for Audit", districts)
@@ -557,9 +792,9 @@ elif page == "🛡️ Security & Integrity":
         score = benford_res['fraud_score']
         
         if score > 0.1:
-            st.error(f"⚠️ HIGH RISK DETECTED (Score: {score:.2f})")
+            st.error(f"HIGH RISK DETECTED (Score: {score:.2f})")
         else:
-            st.success(f"✅ Normal Organic Behavior (Score: {score:.2f})")
+            st.success(f"Normal Organic Behavior (Score: {score:.2f})")
             
         # Plot
         df_ben = benford_res['distribution']
@@ -571,7 +806,7 @@ elif page == "🛡️ Security & Integrity":
 
     # 6A: Anomalies
     st.markdown("---")
-    st.subheader("📉 Statistical Anomaly Detector")
+    st.subheader("Statistical Anomaly Detector")
     st.markdown("Using Isolation Forest to find unusual volume spikes.")
     
     anomalies = adv_engine.detect_anomalies_isolation_forest()

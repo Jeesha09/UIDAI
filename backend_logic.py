@@ -235,3 +235,115 @@ class AadhaarAnalyticsEngine:
         clf = IsolationForest(contamination=0.01, random_state=42)
         data['anomaly'] = clf.fit_predict(X)
         return data[data['anomaly'] == -1].sort_values('age_18_greater', ascending=False)
+
+    def get_bcg_matrix_data(self):
+        """Service Strain Matrix with BCG-style quadrants"""
+        # Calculate metrics
+        age_cols_enrol = [col for col in self.df_enrol.columns if col.startswith('age_')]
+        age_cols_demo = [col for col in self.df_demo.columns if col.startswith('demo_age')]
+        age_cols_bio = [col for col in self.df_bio.columns if col.startswith('bio_age')]
+        
+        enrollments = self.df_enrol.groupby('district')[age_cols_enrol].sum().sum(axis=1).reset_index()
+        enrollments.columns = ['district', 'total_enrollments']
+        
+        updates_demo = self.df_demo.groupby('district')[age_cols_demo].sum().sum(axis=1).reset_index() if age_cols_demo else pd.DataFrame(columns=['district', 'total_updates'])
+        updates_bio = self.df_bio.groupby('district')[age_cols_bio].sum().sum(axis=1).reset_index() if age_cols_bio else pd.DataFrame(columns=['district', 'total_updates'])
+        
+        if not updates_demo.empty:
+            updates_demo.columns = ['district', 'total_updates']
+        if not updates_bio.empty:
+            updates_bio.columns = ['district', 'total_updates']
+            
+        # Merge updates
+        if not updates_demo.empty and not updates_bio.empty:
+            updates = pd.merge(updates_demo, updates_bio, on='district', how='outer', suffixes=('_demo', '_bio'))
+            updates['total_updates'] = updates[['total_updates_demo', 'total_updates_bio']].sum(axis=1)
+            updates = updates[['district', 'total_updates']]
+        elif not updates_demo.empty:
+            updates = updates_demo
+        elif not updates_bio.empty:
+            updates = updates_bio
+        else:
+            updates = pd.DataFrame(columns=['district', 'total_updates'])
+        
+        # Merge enrollments and updates
+        matrix_data = pd.merge(enrollments, updates, on='district', how='outer').fillna(0)
+        
+        return matrix_data
+
+    def get_mobile_van_priority_data(self):
+        """Identify high-priority areas for mobile van deployment"""
+        age_cols_demo = [col for col in self.df_demo.columns if col.startswith('demo_age')]
+        age_cols_bio = [col for col in self.df_bio.columns if col.startswith('bio_age')]
+        
+        # Combine enrollment and update data by pincode
+        enrol_pincode = self.df_enrol.groupby(['district', 'pincode'])['age_18_greater'].sum().reset_index()
+        enrol_pincode.columns = ['district', 'pincode', 'total_enrollments']
+        
+        updates = pd.DataFrame()
+        if age_cols_demo:
+            updates_demo = self.df_demo.groupby(['district', 'pincode'])[age_cols_demo].sum().sum(axis=1).reset_index()
+            updates_demo.columns = ['district', 'pincode', 'total_updates']
+            updates = updates_demo
+        
+        if age_cols_bio:
+            updates_bio = self.df_bio.groupby(['district', 'pincode'])[age_cols_bio].sum().sum(axis=1).reset_index()
+            updates_bio.columns = ['district', 'pincode', 'total_updates']
+            if not updates.empty:
+                updates = pd.merge(updates, updates_bio, on=['district', 'pincode'], how='outer', suffixes=('_demo', '_bio'))
+                updates['total_updates'] = updates[['total_updates_demo', 'total_updates_bio']].sum(axis=1)
+                updates = updates[['district', 'pincode', 'total_updates']]
+            else:
+                updates = updates_bio
+        
+        # Merge data
+        van_data = pd.merge(enrol_pincode, updates, on=['district', 'pincode'], how='outer').fillna(0)
+        van_data['total_activity'] = van_data['total_enrollments'] + van_data['total_updates']
+        
+        # Flag high-priority areas (high updates, indicating need for mobile service)
+        if len(van_data) > 0:
+            threshold = van_data['total_updates'].quantile(0.85)
+            van_data['van_priority'] = van_data['total_updates'] > threshold
+        else:
+            van_data['van_priority'] = False
+            
+        return van_data
+
+    def get_center_productivity_data(self, top_n=20):
+        """Top performing centers by activity volume"""
+        van_data = self.get_mobile_van_priority_data()
+        top_centers = van_data.nlargest(top_n, 'total_activity')
+        return top_centers
+
+    def get_weekly_capacity_data(self):
+        """Weekly activity patterns for capacity planning"""
+        if 'day_of_week' not in self.df_enrol.columns:
+            return pd.DataFrame()
+        
+        age_cols = [col for col in self.df_enrol.columns if col.startswith('age_')]
+        weekly_data = self.df_enrol.groupby('day_of_week')[age_cols].sum().sum(axis=1).reset_index()
+        weekly_data.columns = ['day_of_week', 'total_activity']
+        
+        # Reorder days
+        day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        weekly_data['day_of_week'] = pd.Categorical(weekly_data['day_of_week'], categories=day_order, ordered=True)
+        weekly_data = weekly_data.sort_values('day_of_week')
+        
+        return weekly_data
+
+    def get_growth_velocity_data(self, top_n=5):
+        """Enrollment growth velocity for top districts"""
+        if 'date' not in self.df_enrol.columns:
+            return pd.DataFrame()
+        
+        age_cols = [col for col in self.df_enrol.columns if col.startswith('age_')]
+        
+        # Get top districts by total volume
+        top_districts = self.df_enrol.groupby('district')[age_cols].sum().sum(axis=1).nlargest(top_n).index
+        
+        # Time series data for top districts
+        velocity_data = self.df_enrol[self.df_enrol['district'].isin(top_districts)].groupby(['date', 'district'])[age_cols].sum().sum(axis=1).reset_index()
+        velocity_data.columns = ['date', 'district', 'total_enrollments']
+        velocity_data = velocity_data.sort_values('date')
+        
+        return velocity_data
