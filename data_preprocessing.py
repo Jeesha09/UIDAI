@@ -38,7 +38,24 @@ STATE_ALIASES = {
     "Westbengal": "West Bengal",
     "West  Bengal": "West Bengal",
     "West Bangal": "West Bengal",
+    "West Bengli": "West Bengal",
     "Andhra Pradesh ": "Andhra Pradesh",
+    "Chhatisgarh": "Chhattisgarh",
+    "Uttaranchal": "Uttarakhand",
+    
+    # Spelling variations
+    "Tamilnadu": "Tamil Nadu",
+    
+    # Districts mistakenly entered as states (map to correct state)
+    "Darbhanga": "Bihar",
+    "Jaipur": "Rajasthan",
+    "Nagpur": "Maharashtra",
+    
+    # Neighborhoods/localities mistakenly entered as states (map to correct state)
+    "Balanagar": "Telangana",
+    "Madanapalle": "Andhra Pradesh",
+    "Puttenahalli": "Karnataka",
+    "Raja Annamalai Puram": "Tamil Nadu",
 }
 
 # ==========================================
@@ -49,6 +66,12 @@ DISTRICT_ALIASES = {
     "Bangalore": "Bengaluru",
     "Bangalore Rural": "Bengaluru Rural",
     "Bengaluru Urban": "Bengaluru",
+
+    # 1.5. SIKKIM DISTRICTS (cardinal directions need state suffix)
+    "East": "East Sikkim",
+    "West": "West Sikkim",
+    "North": "North Sikkim",
+    "South": "South Sikkim",
 
     # 2. INVERSIONS (West Bengal/Bihar alignment)
     "24 Paraganas North": "North 24 Parganas",
@@ -131,12 +154,14 @@ def normalize_district_name(district):
     # Standardize whitespace and case
     d = " ".join(d.split()).title()
     
-    # Filter out invalid entries
-    if d in {"East", "West", "North", "South"} or d.isdigit() or len(d) < 2:
+    # Map aliases first (before filtering generic names)
+    d = DISTRICT_ALIASES.get(d, d)
+    
+    # Filter out invalid entries after alias mapping
+    if d.isdigit() or len(d) < 2:
         return None
         
-    # Map aliases
-    return DISTRICT_ALIASES.get(d, d)
+    return d
 
 
 def normalize_state_name(state):
@@ -148,6 +173,49 @@ def normalize_state_name(state):
         return None
     s = STATE_ALIASES.get(s, s)
     return s if s in VALID_STATES_UTS else None
+
+
+def normalize_district_vectorized(series):
+    """Vectorized district normalization - faster than .apply()"""
+    # Remove NaN and invalid values upfront
+    series = series.fillna('')
+    series = series.astype(str).str.strip()
+    series = series.replace(['?', ''], None)
+    
+    # Basic cleaning (vectorized)
+    series = series.str.replace(r"\(.*?\)|\*+|\.+", "", regex=True)
+    series = series.str.replace("Dist :", "", regex=False)
+    series = series.str.replace("&", "and", regex=False)
+    series = series.str.replace(r"[-–—−?]", " ", regex=True)
+    series = series.str.strip().str.title()
+    series = series.apply(lambda x: " ".join(str(x).split()) if pd.notna(x) else None)
+    
+    # Apply aliases
+    series = series.map(lambda x: DISTRICT_ALIASES.get(x, x) if pd.notna(x) else None)
+    
+    # Filter invalid
+    series = series.map(lambda x: None if (pd.notna(x) and (str(x).isdigit() or len(str(x)) < 2)) else x)
+    
+    return series
+
+
+def normalize_state_vectorized(series):
+    """Vectorized state normalization - faster than .apply()"""
+    # Basic cleaning (vectorized)
+    series = series.fillna('')
+    series = series.astype(str).str.strip().str.title()
+    series = series.apply(lambda x: " ".join(str(x).split()) if x else None)
+    
+    # Filter numeric
+    series = series.map(lambda x: None if (pd.notna(x) and str(x).isdigit()) else x)
+    
+    # Apply aliases
+    series = series.map(lambda x: STATE_ALIASES.get(x, x) if pd.notna(x) else None)
+    
+    # Validate
+    series = series.map(lambda x: x if (pd.notna(x) and x in VALID_STATES_UTS) else None)
+    
+    return series
 
 
 # ==========================================
@@ -172,12 +240,27 @@ def preprocess_dataframe(df, dataset_name="Dataset"):
     
     # 1. TEMPORAL CONVERSION - DO THIS FIRST!
     if 'date' in df.columns:
-        # Try multiple date formats
-        df['date'] = pd.to_datetime(df['date'], errors='coerce')
+        before_date = len(df)
+        # Store original dates before parsing
+        df['date_original'] = df['date'].astype(str)
         
-        # Check if dates were parsed
-        valid_dates = df['date'].notna().sum()
-        print(f"✓ Parsed {valid_dates:,} valid dates out of {len(df):,} records")
+        # Try multiple date formats (YYYY-MM-DD, DD-MM-YYYY)
+        df['date'] = pd.to_datetime(df['date'], errors='coerce', dayfirst=True)
+        
+        # Check for invalid dates
+        invalid_date_mask = df['date'].isna()
+        invalid_date_count = invalid_date_mask.sum()
+        valid_dates = before_date - invalid_date_count
+        
+        if invalid_date_count > 0:
+            # Show sample of invalid date formats
+            invalid_date_samples = df[invalid_date_mask]['date_original'].value_counts().head(10)
+            print(f"⚠ Date parsing: {valid_dates:,}/{before_date:,} valid ({invalid_date_count:,} FAILED TO PARSE)")
+            print(f"   Invalid date formats found:")
+            for date_val, count in invalid_date_samples.items():
+                print(f"     - '{date_val}': {count:,} rows")
+        else:
+            print(f"✓ Parsed {valid_dates:,} valid dates out of {before_date:,} records")
         
         if valid_dates > 0:
             df['year'] = df['date'].dt.year
@@ -188,16 +271,67 @@ def preprocess_dataframe(df, dataset_name="Dataset"):
             
             # Drop records with invalid dates
             df = df.dropna(subset=['date'])
+            df.drop(columns=['date_original'], inplace=True)
     
-    # 2. GEOGRAPHY NORMALIZATION
+    # 2. GEOGRAPHY NORMALIZATION (VECTORIZED FOR SPEED)
     if 'state' in df.columns:
-        df['state'] = df['state'].apply(normalize_state_name)
+        before_state = len(df)
+        # Store original values before normalization
+        df['state_original'] = df['state'].copy()
+        df['state'] = normalize_state_vectorized(df['state'])
+        after_state = df['state'].notna().sum()
+        invalid_states = before_state - after_state
+        
+        if invalid_states > 0:
+            # Show actual invalid state values (where normalize returned None)
+            invalid_mask = df['state'].isna() & df['state_original'].notna()
+            if invalid_mask.sum() > 0:
+                invalid_state_samples = df[invalid_mask]['state_original'].value_counts().head(10)
+                print(f"  → State normalization: {after_state:,}/{before_state:,} valid ({invalid_states:,} invalid)")
+                print(f"     Invalid state values found:")
+                for state, count in invalid_state_samples.items():
+                    print(f"       - '{state}': {count:,} rows")
+            else:
+                print(f"  → State normalization: {after_state:,}/{before_state:,} valid")
+        else:
+            print(f"  → State normalization: {after_state:,}/{before_state:,} valid")
+        
+        # Drop temporary column
+        df.drop(columns=['state_original'], inplace=True)
+        
     if 'district' in df.columns:
-        df['district'] = df['district'].apply(normalize_district_name)
+        before_district = len(df)
+        # Store original values before normalization
+        df['district_original'] = df['district'].copy()
+        df['district'] = normalize_district_vectorized(df['district'])
+        after_district = df['district'].notna().sum()
+        invalid_districts = before_district - after_district
+        
+        if invalid_districts > 0:
+            # Show actual invalid district values (where normalize returned None)
+            invalid_mask = df['district'].isna() & df['district_original'].notna()
+            if invalid_mask.sum() > 0:
+                invalid_district_samples = df[invalid_mask]['district_original'].value_counts().head(10)
+                print(f"  → District normalization: {after_district:,}/{before_district:,} valid ({invalid_districts:,} invalid)")
+                print(f"     Invalid district values found:")
+                for district, count in invalid_district_samples.items():
+                    print(f"       - '{district}': {count:,} rows")
+            else:
+                print(f"  → District normalization: {after_district:,}/{before_district:,} valid")
+        else:
+            print(f"  → District normalization: {after_district:,}/{before_district:,} valid")
+        
+        # Drop temporary column
+        df.drop(columns=['district_original'], inplace=True)
     
     # 3. DROP INVALID RECORDS
     if 'state' in df.columns and 'district' in df.columns:
+        before_drop = len(df)
         df = df.dropna(subset=['state', 'district'])
+        after_drop = len(df)
+        dropped_count = before_drop - after_drop
+        if dropped_count > 0:
+            print(f"  → Dropped rows with missing state/district: {dropped_count:,}")
     
     # 4. REGIONAL CLASSIFICATION
     if 'state' in df.columns:
