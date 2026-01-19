@@ -776,39 +776,228 @@ elif page == "Demographics & Policy":
 # --- PAGE 5: SECURITY ---
 elif page == "Security & Integrity":
     st.title("Security & Forensic Audit")
+    st.markdown("**Comprehensive fraud detection and data integrity analysis**")
     
-    # Mine #1: Benford's Law
-    st.subheader("Benford's Law Fraud Detection")
-    st.markdown("**Analyzing 'Adult Enrollment' digits to detect synthetic/fake data entry**")
-    
-    districts = df_enrol['district'].unique()
-    target_dist = st.selectbox("Select District for Audit", districts)
-    
-    benford_res = adv_engine.check_benfords_law(target_dist)
-    
-    if "error" in benford_res:
-        st.error(benford_res['error'])
-    else:
-        score = benford_res['fraud_score']
-        
-        if score > 0.1:
-            st.error(f"HIGH RISK DETECTED (Score: {score:.2f})")
-        else:
-            st.success(f"Normal Organic Behavior (Score: {score:.2f})")
-            
-        # Plot
-        df_ben = benford_res['distribution']
-        fig_ben = go.Figure()
-        fig_ben.add_trace(go.Bar(x=df_ben['digit'], y=df_ben['actual_freq'], name='Actual Data'))
-        fig_ben.add_trace(go.Scatter(x=df_ben['digit'], y=df_ben['benford_freq'], name='Benford Expected', line=dict(color='red')))
-        
-        st.plotly_chart(fig_ben, use_container_width=True)
-
-    # 6A: Anomalies
+    # VISUALIZATION 1: Global Benford's Law Analysis
     st.markdown("---")
-    st.subheader("Statistical Anomaly Detector")
-    st.markdown("Using Isolation Forest to find unusual volume spikes.")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("Fraud Audit: Benford's Law Distribution")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - **Benford's Law** states that naturally occurring numbers follow a predictable pattern for first digits
+            - **Blue bars:** Your actual data distribution
+            - **Red line:** Expected natural distribution
+            
+            **Key Insights:**
+            - **Close match** = Organic, genuine data
+            - **Significant deviation** = Potential fabrication, data entry errors, or fraud
+            - Numbers starting with 1 should appear ~30% of the time naturally
+            
+            **Action Items:**
+            - **High deviation score (>0.15):** Investigate data sources for manipulation
+            - Audit districts showing unusual patterns
+            - Review data entry processes if systematic deviations found
+            """)
     
-    anomalies = adv_engine.detect_anomalies_isolation_forest()
-    st.write(f"Detected {len(anomalies)} anomalous events.")
-    st.dataframe(anomalies.head(10))
+    benford_global = adv_engine.get_benfords_law_global()
+    
+    if "error" not in benford_global:
+        deviation = benford_global['deviation_score']
+        is_suspicious = benford_global['is_suspicious']
+        
+        if is_suspicious:
+            st.error(f"⚠️ HIGH RISK DETECTED | Deviation Score: {deviation:.3f}")
+            st.warning("The data shows significant deviation from Benford's Law. Recommend immediate audit.")
+        else:
+            st.success(f"✓ Normal Organic Behavior | Deviation Score: {deviation:.3f}")
+        
+        # Plot
+        df_ben = benford_global['distribution']
+        fig_ben = go.Figure()
+        fig_ben.add_trace(go.Bar(
+            x=df_ben['digit'], 
+            y=df_ben['actual_freq'], 
+            name='Your Data (Actual)', 
+            marker_color='royalblue'
+        ))
+        fig_ben.add_trace(go.Scatter(
+            x=df_ben['digit'], 
+            y=df_ben['benford_freq'], 
+            mode='lines+markers',
+            name="Benford's Law (Theoretical)", 
+            line=dict(color='red', width=3)
+        ))
+        fig_ben.update_layout(
+            xaxis_title="Leading Digit",
+            yaxis_title="Relative Frequency",
+            template="plotly_white",
+            height=500,
+            xaxis=dict(tickmode='linear', tick0=1, dtick=1)
+        )
+        st.plotly_chart(fig_ben, use_container_width=True)
+    else:
+        st.warning("Insufficient data for Benford's Law analysis")
+    
+    # VISUALIZATION 2: Statistical Outliers (Time Series)
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("Statistical Outliers: Detecting Suspicious Activity Spikes")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - Daily activity volumes over time
+            - **Gray points:** Normal activity days
+            - **Red points:** Anomalous spikes (>2.5 standard deviations above mean)
+            
+            **Key Insights:**
+            - Sudden spikes may indicate:
+              - Policy announcements causing rush
+              - Data backlog processing
+              - Potential fraud or data manipulation
+            
+            **Action Items:**
+            - Investigate **red spikes** for root cause
+            - Verify if spikes correspond to legitimate events
+            - Review centers active during anomalous periods
+            """)
+    
+    outliers_data = adv_engine.get_statistical_outliers()
+    
+    if not outliers_data.empty:
+        anomaly_count = outliers_data['is_anomaly'].sum()
+        st.metric("Suspicious Activity Days Detected", anomaly_count)
+        
+        fig_outliers = px.scatter(
+            outliers_data, 
+            x='date', 
+            y='total_activity',
+            color='is_anomaly',
+            color_discrete_map={True: 'red', False: 'gray'},
+            labels={'total_activity': 'Daily Volume', 'is_anomaly': 'Suspicious Spike'},
+            template="plotly_white",
+            height=500
+        )
+        
+        # Add trend line
+        fig_outliers.add_trace(go.Scatter(
+            x=outliers_data['date'], 
+            y=outliers_data['total_activity'],
+            mode='lines',
+            line=dict(color='lightgray', width=1),
+            showlegend=False,
+            hoverinfo='skip'
+        ))
+        
+        # Add threshold line
+        if 'threshold' in outliers_data.columns:
+            fig_outliers.add_hline(
+                y=outliers_data['threshold'].iloc[0],
+                line_dash="dash",
+                line_color="orange",
+                annotation_text="Anomaly Threshold"
+            )
+        
+        st.plotly_chart(fig_outliers, use_container_width=True)
+    else:
+        st.info("Insufficient time-series data for outlier detection")
+    
+    # VISUALIZATION 3: Volatility Analysis
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("Volatility Analysis: Top 20 Most Erratic Centers")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - Centers ranked by inconsistency in activity levels
+            - **Variance Score:** Coefficient of variation (higher = more erratic)
+            
+            **Key Insights:**
+            - High volatility may indicate:
+              - Seasonal/irregular operations
+              - Inconsistent staffing
+              - Potential gaming of quotas
+              - Data quality issues
+            
+            **Action Items:**
+            - Audit top-scoring centers for operational irregularities
+            - Verify if volatility matches expected patterns (e.g., rural vs urban)
+            - Implement monitoring for consistently erratic centers
+            """)
+    
+    volatility_data = adv_engine.get_volatility_analysis(top_n=20)
+    
+    if not volatility_data.empty:
+        fig_volatility = px.bar(
+            volatility_data,
+            x='pincode',
+            y='variance_score',
+            color='variance_score',
+            color_continuous_scale='Reds',
+            labels={'pincode': 'Pincode', 'variance_score': 'Erratic Behavior Score'},
+            template="plotly_white",
+            height=500
+        )
+        fig_volatility.update_xaxes(tickangle=45)
+        st.plotly_chart(fig_volatility, use_container_width=True)
+        
+        # Display detailed table
+        with st.expander("View Detailed Volatility Metrics"):
+            st.dataframe(
+                volatility_data[['pincode', 'mean', 'std', 'variance_score']].style.format({
+                    'mean': '{:.1f}',
+                    'std': '{:.1f}',
+                    'variance_score': '{:.3f}'
+                }),
+                use_container_width=True
+            )
+    else:
+        st.info("Insufficient data for volatility analysis")
+    
+    # VISUALIZATION 4: State Variance (Box Plot)
+    st.markdown("---")
+    col1, col2 = st.columns([0.95, 0.05])
+    with col1:
+        st.subheader("Within-State Variance: Analyzing Consistency Across State Borders")
+    with col2:
+        with st.popover("ℹ️"):
+            st.markdown("""
+            **What This Shows:**
+            - Distribution of district-level activity within each state
+            - **Box:** Interquartile range (25th-75th percentile)
+            - **Outlier points:** Districts significantly different from state norm
+            
+            **Key Insights:**
+            - **Wide boxes:** High internal variance within state
+            - **Outliers:** Districts needing investigation
+            - **Narrow boxes:** Consistent state-level operations
+            
+            **Action Items:**
+            - Investigate outlier districts for unique factors
+            - States with high variance may need standardized processes
+            - Compare resource allocation across high/low variance states
+            """)
+    
+    state_variance = adv_engine.get_state_variance_data()
+    
+    if not state_variance.empty and len(state_variance['state'].unique()) > 1:
+        fig_variance = px.box(
+            state_variance,
+            x='state',
+            y='total_activity',
+            color='state',
+            points="outliers",
+            labels={'total_activity': 'Activity Level', 'state': 'State Name'},
+            template="plotly_white",
+            height=600
+        )
+        fig_variance.update_xaxes(tickangle=45)
+        st.plotly_chart(fig_variance, use_container_width=True)
+    else:
+        st.info("Insufficient state-level data for variance analysis")

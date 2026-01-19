@@ -236,6 +236,98 @@ class AadhaarAnalyticsEngine:
         data['anomaly'] = clf.fit_predict(X)
         return data[data['anomaly'] == -1].sort_values('age_18_greater', ascending=False)
 
+    def get_benfords_law_global(self):
+        """Global Benford's Law analysis across all data"""
+        import math
+        
+        # Get all age columns
+        age_cols = [col for col in self.df_enrol.columns if col.startswith('age_')]
+        
+        # Calculate total activity per record
+        self.df_enrol['total_activity'] = self.df_enrol[age_cols].sum(axis=1)
+        
+        # Get leading digits (excluding zeros)
+        data = self.df_enrol[self.df_enrol['total_activity'] > 0]['total_activity']
+        
+        if len(data) < 10:
+            return {"error": "Insufficient data"}
+        
+        # Extract first digit
+        first_digits = data.astype(str).str[0].astype(int)
+        actual_freq = first_digits.value_counts(normalize=True).sort_index()
+        
+        # Benford's theoretical distribution
+        theoretical_freq = pd.Series({d: math.log10(1 + 1/d) for d in range(1, 10)})
+        
+        # Combine for plotting
+        results = pd.DataFrame({
+            'digit': range(1, 10),
+            'actual_freq': [actual_freq.get(d, 0) for d in range(1, 10)],
+            'benford_freq': [theoretical_freq.get(d, 0) for d in range(1, 10)]
+        })
+        
+        # Calculate deviation score
+        deviation = abs(results['actual_freq'] - results['benford_freq']).sum()
+        
+        return {
+            'distribution': results,
+            'deviation_score': deviation,
+            'is_suspicious': deviation > 0.15
+        }
+
+    def get_statistical_outliers(self):
+        """Detect anomalous activity spikes over time"""
+        age_cols = [col for col in self.df_enrol.columns if col.startswith('age_')]
+        
+        # Daily aggregation
+        daily = self.df_enrol.groupby('date')[age_cols].sum().sum(axis=1).reset_index()
+        daily.columns = ['date', 'total_activity']
+        
+        if len(daily) < 3:
+            return pd.DataFrame()
+        
+        # Calculate statistical thresholds
+        mean = daily['total_activity'].mean()
+        std = daily['total_activity'].std()
+        threshold = mean + (2.5 * std)
+        
+        daily['is_anomaly'] = daily['total_activity'] > threshold
+        daily['threshold'] = threshold
+        
+        return daily
+
+    def get_volatility_analysis(self, top_n=20):
+        """Analyze centers with erratic/inconsistent behavior"""
+        age_cols = [col for col in self.df_enrol.columns if col.startswith('age_')]
+        
+        # Aggregate by pincode
+        volatility = self.df_enrol.groupby('pincode')[age_cols].sum().sum(axis=1).reset_index()
+        volatility.columns = ['pincode', 'total_activity']
+        
+        # Calculate variance score per pincode over time
+        pincode_stats = self.df_enrol.groupby('pincode').agg({
+            age_cols[0]: ['mean', 'std', 'count']
+        }).reset_index()
+        pincode_stats.columns = ['pincode', 'mean', 'std', 'count']
+        
+        # Calculate coefficient of variation
+        pincode_stats['variance_score'] = (pincode_stats['std'] / pincode_stats['mean']).fillna(0)
+        
+        # Filter centers with sufficient data and sort by variance
+        erratic = pincode_stats[pincode_stats['count'] > 5].sort_values('variance_score', ascending=False).head(top_n)
+        
+        return erratic
+
+    def get_state_variance_data(self):
+        """Analyze consistency across states using box plots"""
+        age_cols = [col for col in self.df_enrol.columns if col.startswith('age_')]
+        
+        # Calculate activity per district
+        state_data = self.df_enrol.groupby(['state', 'district'])[age_cols].sum().sum(axis=1).reset_index()
+        state_data.columns = ['state', 'district', 'total_activity']
+        
+        return state_data
+
     def get_bcg_matrix_data(self):
         """Service Strain Matrix with BCG-style quadrants"""
         # Calculate metrics
