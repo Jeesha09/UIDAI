@@ -429,10 +429,10 @@ if page == "Executive Summary":
             featureidkey='properties.NAME_2',
             color='cluster_label',
             color_discrete_map={
-                'Cluster 0': '#1f77b4',
-                'Cluster 1': '#ff7f0e',
-                'Cluster 2': '#2ca02c',
-                'Cluster 3': '#d62728'
+                'Balanced Growth': '#1f77b4',
+                'Rapid Growth': '#ff7f0e',
+                'Stable': '#2ca02c',
+                'Dormant': '#d62728'
             },
             hover_name='district',
             hover_data=['state', 'total_volume'],
@@ -842,7 +842,7 @@ elif page == "Demographics & Policy":
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("**4A. Age Group Distribution**")
+        st.subheader("**Age Group Distribution**")
         age_data = {
             '0-5 years': df_enrol[df_enrol['district'] == selected_dist]['age_0_5'].sum(),
             '5-18 years': df_enrol[df_enrol['district'] == selected_dist]['age_5_17'].sum(),
@@ -860,7 +860,7 @@ elif page == "Demographics & Policy":
         st.plotly_chart(fig_4a, use_container_width=True)
     
     with col2:
-        st.subheader("**5A. Health Score** (Update-to-Enrollment)")
+        st.subheader("**Health Score** (Update-to-Enrollment)")
         
         total_enrol = df_enrol[df_enrol['district'] == selected_dist][['age_0_5', 'age_5_17', 'age_18_greater']].sum().sum()
         total_updates = (df_demo[df_demo['district'] == selected_dist][['demo_age_5_17', 'demo_age_17_']].sum().sum() + 
@@ -893,7 +893,7 @@ elif page == "Demographics & Policy":
     col1, col2 = st.columns([0.6, 0.4])
     
     with col1:
-        st.subheader("**5C. Update Lag Distribution**")
+        st.subheader("**Update Lag Distribution**")
         age_options = ['All Ages', '5-18 years', '18+ years']
         selected_age = st.selectbox("Filter by Age Group", age_options)
         
@@ -913,7 +913,7 @@ elif page == "Demographics & Policy":
     col1, col2 = st.columns(2)
     
     with col1:
-        st.subheader("**4B. Age Group Growth Over Time**")
+        st.subheader("**Age Group Growth Over Time**")
         
         growth_data = df_enrol[df_enrol['district'] == selected_dist].groupby('date')[
             ['age_0_5', 'age_5_17', 'age_18_greater']
@@ -930,7 +930,7 @@ elif page == "Demographics & Policy":
             st.warning("No time-series data available")
     
     with col2:
-        st.subheader("**8B. Behavioral Segmentation**")
+        st.subheader("**Behavioral Segmentation**")
         states = sorted(df_enrol['state'].dropna().unique())
         state_a = st.selectbox("State A", states, key="state_a")
         state_b = st.selectbox("State B", states[1:], key="state_b")

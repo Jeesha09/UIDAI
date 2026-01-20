@@ -98,7 +98,13 @@ class ExecutiveSummaryEngine:
         features['cluster_id'] = kmeans.fit_predict(X_scaled)
         
         def label_cluster(row):
-            return f"Cluster {row['cluster_id']}"
+            cluster_names = {
+                0: 'Balanced Growth',
+                1: 'Rapid Growth',
+                2: 'Stable',
+                3: 'Dormant'
+            }
+            return cluster_names.get(row['cluster_id'], f"Cluster {row['cluster_id']}")
 
         features['cluster_label'] = features.apply(label_cluster, axis=1)
         

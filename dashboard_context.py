@@ -5,10 +5,10 @@ RAW_CONTEXT = {
     "Executive Summary": """
     - **Location Archetypes (Cluster Map)**: 
         - **What is it?**: A map of India where districts are colored by their 'Cluster' (0, 1, 2, 3).
-        - **Cluster 0 (Blue)**: High Volume / Balanced Growth. These are stable major districts.
-        - **Cluster 1 (Orange)**: Rapid Growth / High Churn. These areas are growing fast but have many updates (people moving or correcting data).
-        - **Cluster 2 (Green)**: Stagnant / Rural. Low volume and low updates.
-        - **Cluster 3 (Red)**: Critical Decline. Enrollment numbers are dropping here.
+        - **Balanced Growth(Blue)**: High Volume / Balanced Growth. These are stable major districts.
+        - **Rapid Growth (Orange)**: Rapid Growth / High Churn. These areas are growing fast but have many updates (people moving or correcting data).
+        - **Stable (Green)**: Stagnant / Rural. Low volume and low updates.
+        - **Dormant (Red)**: Critical Decline. Enrollment numbers are dropping here.
     - **Critical Alerts**: Shows districts with >20% decline in enrollment.
     """,
     
