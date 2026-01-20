@@ -81,7 +81,7 @@ st.markdown("""
     
     .stButton > button {
         background-color: var(--accent-color);
-        color: white;
+        color: #ffffff !important;
         border: none;
         border-radius: 6px;
         padding: 0.5rem 1.5rem;
@@ -92,6 +92,17 @@ st.markdown("""
     .stButton > button:hover {
         background-color: #3d8ce8;
         box-shadow: 0 4px 12px rgba(74, 158, 255, 0.3);
+    }
+    
+    /* Sidebar button specific styling */
+    [data-testid="stSidebar"] .stButton > button {
+        background-color: #2874d4 !important;
+        color: #ffffff !important;
+        font-weight: 600;
+    }
+    
+    [data-testid="stSidebar"] .stButton > button:hover {
+        background-color: #1e5fb8 !important;
     }
     
     hr {
@@ -362,18 +373,26 @@ if page == "Executive Summary":
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.metric("Critical Decline Districts", early_warning['metric_value'], delta="-5%")
+        st.markdown(f"""
+        <div style='padding: 1rem; background-color: #1a1d29; border-radius: 0.5rem; border: 1px solid #2d3139; min-height: 120px;'>
+            <div style='display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;'>
+                <span style='color: #a9b1c0; font-size: 0.875rem;'>Critical Decline Districts</span>
+                <span style='background-color: rgba(255, 75, 75, 0.1); color: #ff4b4b; padding: 0.125rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 500;'>↓ -5%</span>
+            </div>
+            <p style='color: #fafafa; font-size: 2.5rem; font-weight: 600; margin: 0; line-height: 1.2;'>{early_warning['metric_value']}</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("<div style='margin-bottom: 1rem;'></div>", unsafe_allow_html=True)
         
         # THE "VIEW ALL" POPUP BUTTON
         with st.popover("View All Declining Districts"):
             st.markdown("### Full List of Critical Districts")
             st.write("Districts with >20% drop in enrollment volume.")
-            # displaying the dataframe makes it scrollable automatically
-            st.dataframe(
-                early_warning['details_df'][['change_pct']].style.format("{:.1f}%"),
-                use_container_width=True,
-                height=400  # Fixed height makes it scrollable
-            )
+            # Display as static table (top 10 rows)
+            display_df = early_warning['details_df'][['change_pct']].head(10).copy()
+            display_df['change_pct'] = display_df['change_pct'].apply(lambda x: f"{x:.1f}%")
+            st.table(display_df)
 
     with col2:
         st.metric("Stagnant Pincodes (30 Days)", stagnation['total_stagnant'], delta_color="inverse")
@@ -383,11 +402,10 @@ if page == "Executive Summary":
             st.markdown("### Full List of Inactive Pincodes")
             st.write("Pincodes with zero activity in the last 30 days.")
             if stagnation['pincode_list']:
-                st.dataframe(
-                    pd.DataFrame(stagnation['pincode_list'], columns=["Inactive Pincode"]),
-                    use_container_width=True,
-                    height=400 # Scrollable
-                )
+                # Display as static table (top 10 rows)
+                display_df = pd.DataFrame(stagnation['pincode_list'][:10], columns=["Inactive Pincode"])
+                display_df["Inactive Pincode"] = display_df["Inactive Pincode"].astype(str)
+                st.table(display_df)
             else:
                 st.success("No stagnant pincodes found.")
 
