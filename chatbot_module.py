@@ -2,7 +2,6 @@ import streamlit as st
 import google.generativeai as genai
 from pandasai import Agent
 from pandasai.llm import LLM
-from pandasai.core.prompts.base import BasePrompt
 from dashboard_context import get_page_context
 
 HARDCODED_API_KEY = "AIzaSyAItQIgASLO5fdRGitBvd2PEUuRMHcgOn0"
@@ -15,7 +14,7 @@ class GeminiLLM(LLM):
         genai.configure(api_key=api_key)
         self._model = genai.GenerativeModel('gemini-2.5-flash')
     
-    def call(self, instruction: BasePrompt, context=None) -> str:
+    def call(self, instruction, context=None) -> str:
         """Execute the LLM with given prompt"""
         prompt_text = str(instruction)
         response = self._model.generate_content(prompt_text)
