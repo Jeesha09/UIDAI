@@ -303,27 +303,47 @@ def preload_all_charts(_df_enrol, _df_bio, _df_demo):
     return charts
 
 try:
-    # Create progress bar
-    progress_text = "Loading data and pre-generating visualizations (ML predictions loaded from cache)..."
-    progress_bar = st.progress(0, text=progress_text)
-    
-    # Load data (20% progress)
-    progress_bar.progress(20, text="Loading CSV files...")
-    df_enrol, df_bio, df_demo = load_data()
-    
-    # Initialize engines (40% progress)
-    progress_bar.progress(40, text="Initializing analytics engines...")
-    exec_engine = ExecutiveSummaryEngine(df_enrol, df_bio, df_demo)
-    adv_engine = AadhaarAnalyticsEngine(df_enrol, df_bio, df_demo)
-    
-    # Pre-generate all charts and load ML predictions from cache (60-100% progress)
-    progress_bar.progress(60, text="Pre-generating charts and loading ML predictions from cache...")
-    preloaded_charts = preload_all_charts(df_enrol, df_bio, df_demo)
-    
-    progress_bar.progress(100, text="Complete!")
-    progress_bar.empty()  # Remove progress bar
-    
-    st.toast(f"✅ Ready! {len(df_enrol):,} enrollments loaded", icon="🎉")
+    # Streamlit Cloud health check optimization
+    # Load data in background without blocking health check
+    if "data_loaded" not in st.session_state:
+        # Create progress bar
+        progress_text = "Loading data and pre-generating visualizations (ML predictions loaded from cache)..."
+        progress_bar = st.progress(0, text=progress_text)
+        
+        # Load data (20% progress)
+        progress_bar.progress(20, text="Loading CSV files...")
+        df_enrol, df_bio, df_demo = load_data()
+        
+        # Initialize engines (40% progress)
+        progress_bar.progress(40, text="Initializing analytics engines...")
+        exec_engine = ExecutiveSummaryEngine(df_enrol, df_bio, df_demo)
+        adv_engine = AadhaarAnalyticsEngine(df_enrol, df_bio, df_demo)
+        
+        # Pre-generate all charts and load ML predictions from cache (60-100% progress)
+        progress_bar.progress(60, text="Pre-generating charts and loading ML predictions from cache...")
+        preloaded_charts = preload_all_charts(df_enrol, df_bio, df_demo)
+        
+        progress_bar.progress(100, text="Complete!")
+        progress_bar.empty()  # Remove progress bar
+        
+        # Store in session state
+        st.session_state.data_loaded = True
+        st.session_state.df_enrol = df_enrol
+        st.session_state.df_bio = df_bio
+        st.session_state.df_demo = df_demo
+        st.session_state.exec_engine = exec_engine
+        st.session_state.adv_engine = adv_engine
+        st.session_state.preloaded_charts = preloaded_charts
+        
+        st.toast(f"✅ Ready! {len(df_enrol):,} enrollments loaded", icon="🎉")
+    else:
+        # Use cached data
+        df_enrol = st.session_state.df_enrol
+        df_bio = st.session_state.df_bio
+        df_demo = st.session_state.df_demo
+        exec_engine = st.session_state.exec_engine
+        adv_engine = st.session_state.adv_engine
+        preloaded_charts = st.session_state.preloaded_charts
 
 except Exception as e:
     st.error(f"Critical Error loading data: {e}")
