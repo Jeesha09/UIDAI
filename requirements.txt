@@ -10,3 +10,5 @@ matplotlib
 seaborn
 google-generativeai
 pandasai
+pyyaml
+
