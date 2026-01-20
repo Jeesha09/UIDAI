@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 from backend_logic import ExecutiveSummaryEngine, AadhaarAnalyticsEngine
 from data_preprocessing import preprocess_dataframe
 import trends_analytics
+from chatbot_module import AadhaarChatbot
 
 # ==========================================
 # 1. PAGE CONFIGURATION
@@ -2494,3 +2495,44 @@ elif page == "ML Predictions & Intelligence":
             )
     else:
         st.warning("⚠️ Insufficient cohort data for transition prediction")
+
+
+# ==========================================
+# 🤖 INTELLIGENT CHATBOT (Place at bottom of app.py)
+# ==========================================
+st.sidebar.markdown("---")
+st.sidebar.subheader("💬 AI Analyst")
+
+# Initialize Session State for Chat History
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+
+# Initialize Bot (Only once) - NO API KEY PASSED HERE
+if "bot" not in st.session_state:
+    # We don't pass api_key anymore, it's inside the class
+    st.session_state.bot = AadhaarChatbot(df_enrol, df_bio, df_demo)
+
+# Chat UI
+user_input = st.sidebar.text_area("Ask about charts or data:", height=70)
+
+if st.sidebar.button("Ask AI"):
+    if user_input:
+        # Add user message to history
+        st.session_state.chat_history.append({"role": "user", "content": user_input})
+        
+        with st.spinner("Thinking..."):
+            try:
+                # PASS THE CURRENT PAGE TO THE BOT
+                response = st.session_state.bot.ask(user_input, current_page=page)
+            except Exception as e:
+                response = f"I encountered an error: {e}"
+            
+        # Add bot response to history
+        st.session_state.chat_history.append({"role": "assistant", "content": response})
+
+# Display History (Latest on top)
+for msg in reversed(st.session_state.chat_history):
+    if msg["role"] == "user":
+        st.sidebar.write(f"**You:** {msg['content']}")
+    else:
+        st.sidebar.info(f"**Bot:** {msg['content']}")
