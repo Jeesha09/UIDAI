@@ -8,3 +8,5 @@ prophet
 networkx
 matplotlib
 seaborn
+google-generativeai
+pandasai
