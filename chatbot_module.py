@@ -5,7 +5,6 @@ from pandasai.llm import LLM
 from pandasai.core.prompts.base import BasePrompt
 from dashboard_context import get_page_context
 
-# --- PASTE YOUR GOOGLE API KEY HERE ---
 HARDCODED_API_KEY = "AIzaSyAItQIgASLO5fdRGitBvd2PEUuRMHcgOn0"
 
 class GeminiLLM(LLM):
@@ -29,16 +28,21 @@ class GeminiLLM(LLM):
 class AadhaarChatbot:
     def __init__(self, df_enrol, df_bio, df_demo):
         self.api_key = HARDCODED_API_KEY
-        
-        # 1. Configure Google Gemini (For Context/Explanations)
-        genai.configure(api_key=self.api_key)
-        self.model = genai.GenerativeModel('gemini-2.5-flash')
-        
-        # 2. Configure PandasAI with Custom Gemini LLM
-        self.llm_pandas = GeminiLLM(api_key=self.api_key)
-        
-        # Combine datasets
         self.dfs = [df_enrol, df_bio, df_demo]
+        self._model = None
+        self._llm_pandas = None
+
+    def _get_gemini_model(self):
+        if self._model is None:
+            import google.generativeai as genai
+            genai.configure(api_key=self.api_key)
+            self._model = genai.GenerativeModel("gemini-2.5-flash")
+        return self._model
+
+    def _get_pandas_llm(self):
+        if self._llm_pandas is None:
+            self._llm_pandas = GeminiLLM(api_key=self.api_key)
+        return self._llm_pandas
 
     def _decide_intent(self, user_query):
         """
@@ -52,7 +56,8 @@ class AadhaarChatbot:
         """
         
         try:
-            response = self.model.generate_content(system_prompt + user_query)
+            model = self._get_gemini_model()
+            response = model.generate_content(system_prompt + user_query)
             return response.text.strip().upper()
         except:
             return "DATA"
@@ -72,7 +77,8 @@ class AadhaarChatbot:
         """
         
         try:
-            response = self.model.generate_content(prompt)
+            model = self._get_gemini_model()
+            response = model.generate_content(prompt)
             return response.text
         except Exception as e:
             return f"I couldn't generate an explanation. Error: {str(e)}"
@@ -80,7 +86,7 @@ class AadhaarChatbot:
     def _answer_with_data(self, user_query):
         try:
             # Step 1: Get the RAW Answer from PandasAI
-            agent = Agent(self.dfs, config={"llm": self.llm_pandas})
+            agent = Agent(self.dfs, config={"llm": self._get_pandas_llm()})
             
             query = f"""
             I have 3 datasets:
@@ -105,7 +111,8 @@ class AadhaarChatbot:
             Do not just paste the table. Explain what the numbers mean.
             """
             
-            final_response = self.model.generate_content(humanizer_prompt)
+            model = self._get_gemini_model()
+            final_response = model.generate_content(humanizer_prompt)
             return final_response.text
             
         except Exception as e:
