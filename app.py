@@ -7,7 +7,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from backend_logic import ExecutiveSummaryEngine, AadhaarAnalyticsEngine
 from data_preprocessing import preprocess_dataframe
-import trends_analytics
 from chatbot_module import AadhaarChatbot
 
 # ==========================================
@@ -197,6 +196,104 @@ def load_data():
 # CALLING THE FUNCTION & PRE-GENERATE ALL CHARTS
 # ==========================================
 @st.cache_data
+def load_trends_from_cache():
+    """Load pre-generated trends analytics from cache file"""
+    import json
+    import os
+    
+    cache_file = 'trends_cache.json'
+    
+    if not os.path.exists(cache_file):
+        st.warning(f"⚠️ Trends cache file not found. Please run `generate_trends_cache.py` first to generate trends data.")
+        return {}
+    
+    try:
+        with open(cache_file, 'r') as f:
+            trends_cache = json.load(f)
+        
+        # Convert back to appropriate formats
+        trends_data = {}
+        
+        # 1. Forecast Data
+        if 'forecast_data' in trends_cache and trends_cache['forecast_data']:
+            forecast_dict = trends_cache['forecast_data']
+            if forecast_dict and 'dates' in forecast_dict:
+                forecast_df = pd.DataFrame({
+                    'Historical': forecast_dict['Historical'],
+                    'Forecast': forecast_dict['Forecast']
+                })
+                forecast_df.index = pd.to_datetime(forecast_dict['dates'])
+                if forecast_dict.get('yhat_lower'):
+                    forecast_df['yhat_lower'] = forecast_dict['yhat_lower']
+                if forecast_dict.get('yhat_upper'):
+                    forecast_df['yhat_upper'] = forecast_dict['yhat_upper']
+                trends_data['forecast_data'] = forecast_df
+            else:
+                trends_data['forecast_data'] = pd.DataFrame()
+        else:
+            trends_data['forecast_data'] = pd.DataFrame()
+        
+        # 2. Day-of-Week Data
+        if 'dow_data' in trends_cache and trends_cache['dow_data']:
+            dow_dict = trends_cache['dow_data']
+            if dow_dict and 'days' in dow_dict:
+                dow_df = pd.DataFrame(
+                    dow_dict['data'],
+                    index=dow_dict['days'],
+                    columns=dow_dict['columns']
+                )
+                # Fix day ordering
+                day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+                dow_df = dow_df.reindex([d for d in day_order if d in dow_df.index])
+                trends_data['dow_data'] = dow_df
+            else:
+                trends_data['dow_data'] = pd.DataFrame()
+        else:
+            trends_data['dow_data'] = pd.DataFrame()
+        
+        # 3. Growth Data
+        if 'growth_data' in trends_cache and trends_cache['growth_data']:
+            growth_dict = trends_cache['growth_data']
+            if growth_dict and 'dates' in growth_dict:
+                growth_df = pd.DataFrame(
+                    growth_dict['data'],
+                    index=pd.to_datetime(growth_dict['dates']),
+                    columns=growth_dict['districts']
+                )
+                trends_data['growth_data'] = growth_df
+            else:
+                trends_data['growth_data'] = pd.DataFrame()
+        else:
+            trends_data['growth_data'] = pd.DataFrame()
+        
+        # 4. Seasonal Radar (Plotly figure)
+        if 'seasonal_radar' in trends_cache and trends_cache['seasonal_radar']:
+            import plotly.io as pio
+            trends_data['seasonal_radar'] = pio.from_json(trends_cache['seasonal_radar'])
+        else:
+            trends_data['seasonal_radar'] = None
+        
+        # 5. Network Graph (Plotly figure)
+        if 'network_graph' in trends_cache and trends_cache['network_graph']:
+            import plotly.io as pio
+            trends_data['network_graph'] = pio.from_json(trends_cache['network_graph'])
+        else:
+            trends_data['network_graph'] = None
+        
+        # Display cache info in sidebar
+        if 'metadata' in trends_cache:
+            metadata = trends_cache['metadata']
+            generated_at = pd.to_datetime(metadata['generated_at']).strftime('%Y-%m-%d %H:%M:%S')
+            print(f"  ✓ Loaded trends data from cache (generated: {generated_at})")
+        
+        return trends_data
+        
+    except Exception as e:
+        st.error(f"❌ Error loading trends cache: {str(e)}")
+        return {}
+
+
+@st.cache_data
 def load_ml_predictions_from_cache():
     """Load pre-generated ML predictions from cache file"""
     import json
@@ -274,32 +371,22 @@ def load_ml_predictions_from_cache():
 
 
 def preload_all_charts(_df_enrol, _df_bio, _df_demo):
-    """Pre-generate visualizations and load ML predictions from cache"""
+    """Load pre-generated visualizations and predictions from cache files"""
     charts = {}
     
-    print("Pre-generating charts and loading ML predictions...")
+    print("Loading cached data...")
     
-    # Trends Analytics
-    charts['forecast_data'] = trends_analytics.get_forecast_data(_df_enrol, days_forward=30)
-    print("  ✓ Forecast data")
-    
-    charts['dow_data'] = trends_analytics.get_dow_data(_df_enrol)
-    print("  ✓ Day-of-week data")
-    
-    charts['growth_data'] = trends_analytics.get_growth_data(_df_enrol, top_n=10)
-    print("  ✓ Growth trajectory data")
-    
-    charts['seasonal_radar'] = trends_analytics.create_seasonal_radar(_df_enrol)
-    print("  ✓ Seasonal radar")
-    
-    charts['network_graph'] = trends_analytics.create_network_graph(_df_enrol, top_n=25)
-    print("  ✓ Network graph")
+    # Load Trends Analytics from Cache (FAST!)
+    trends_data = load_trends_from_cache()
+    charts.update(trends_data)
+    print("  ✓ Trends analytics loaded from cache")
     
     # Load ML Predictions from Cache (FAST!)
     ml_predictions = load_ml_predictions_from_cache()
     charts.update(ml_predictions)
+    print("  ✓ ML predictions loaded from cache")
     
-    print("All charts and ML predictions ready!")
+    print("All cached data ready!")
     return charts
 
 try:
@@ -307,7 +394,7 @@ try:
     # Load data in background without blocking health check
     if "data_loaded" not in st.session_state:
         # Create progress bar
-        progress_text = "Loading data and pre-generating visualizations (ML predictions loaded from cache)..."
+        progress_text = "Loading data and cached visualizations (trends & ML predictions from cache)..."
         progress_bar = st.progress(0, text=progress_text)
         
         # Load data (20% progress)
@@ -319,8 +406,8 @@ try:
         exec_engine = ExecutiveSummaryEngine(df_enrol, df_bio, df_demo)
         adv_engine = AadhaarAnalyticsEngine(df_enrol, df_bio, df_demo)
         
-        # Pre-generate all charts and load ML predictions from cache (60-100% progress)
-        progress_bar.progress(60, text="Pre-generating charts and loading ML predictions from cache...")
+        # Load all cached data (60-100% progress)
+        progress_bar.progress(60, text="Loading trends analytics and ML predictions from cache...")
         preloaded_charts = preload_all_charts(df_enrol, df_bio, df_demo)
         
         progress_bar.progress(100, text="Complete!")
@@ -675,7 +762,7 @@ elif page == "Operations & Logistics":
 # --- PAGE 3: TRENDS ---
 elif page == "Trends & Forecasting":
     st.title("Trends & Predictive Analytics")
-    st.markdown(f"**Analyzing {len(df_enrol):,} enrollment records across {df_enrol['district'].nunique()} districts**")
+    st.markdown(f"**Analyzing {len(df_enrol):,} enrollment records across {df_enrol['district'].nunique()} districts** • _Data loaded from cache_")
     
     # 30-Day Enrollment Forecast
     st.markdown("---")
@@ -756,7 +843,11 @@ elif page == "Trends & Forecasting":
             - Align policy announcements with **peak engagement months**
             """)
     
-    st.plotly_chart(preloaded_charts['seasonal_radar'], use_container_width=True)
+    seasonal_radar = preloaded_charts.get('seasonal_radar')
+    if seasonal_radar:
+        st.plotly_chart(seasonal_radar, use_container_width=True)
+    else:
+        st.warning("⚠️ Seasonal radar chart not available. Run `python generate_trends_cache.py` to generate.")
     
     # Day-of-Week Patterns
     st.markdown("---")
@@ -785,7 +876,42 @@ elif page == "Trends & Forecasting":
     
     dow_data = preloaded_charts.get('dow_data', pd.DataFrame())
     if not dow_data.empty:
-        st.bar_chart(dow_data, height=500, color=["#2ca02c", "#d62728"])
+        # Force correct day order for display
+        day_order = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        dow_data_ordered = dow_data.reindex([d for d in day_order if d in dow_data.index])
+        
+        # Check if Urban has any data
+        has_urban = 'Urban' in dow_data_ordered.columns and dow_data_ordered['Urban'].sum() > 0
+        
+        # Use Plotly for proper ordering control
+        fig_dow = go.Figure()
+        if 'Rural' in dow_data_ordered.columns:
+            fig_dow.add_trace(go.Bar(
+                name='Rural',
+                x=dow_data_ordered.index,
+                y=dow_data_ordered['Rural'],
+                marker_color='#2ca02c'
+            ))
+        if has_urban:
+            fig_dow.add_trace(go.Bar(
+                name='Urban',
+                x=dow_data_ordered.index,
+                y=dow_data_ordered['Urban'],
+                marker_color='#d62728'
+            ))
+        
+        fig_dow.update_layout(
+            barmode='group',
+            height=500,
+            xaxis_title='Day of Week',
+            yaxis_title='Enrollment Count',
+            template='plotly_white',
+            xaxis={'categoryorder': 'array', 'categoryarray': day_order}
+        )
+        st.plotly_chart(fig_dow, use_container_width=True)
+        
+        if not has_urban:
+            st.info("ℹ️ No Urban enrollment data available in the dataset - all enrollments are from Rural areas.")
     else:
         st.warning("⚠️ Day-of-week data not available")
     
@@ -863,7 +989,11 @@ elif page == "Trends & Forecasting":
             - **Leverage connections** - Success in one district can be promoted to its network neighbors
             """)
     
-    st.plotly_chart(preloaded_charts['network_graph'], use_container_width=True)
+    network_graph = preloaded_charts.get('network_graph')
+    if network_graph:
+        st.plotly_chart(network_graph, use_container_width=True)
+    else:
+        st.warning("⚠️ Network graph not available. Run `python generate_trends_cache.py` to generate.")
 
 
 
