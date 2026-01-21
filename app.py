@@ -294,6 +294,150 @@ def load_trends_from_cache():
 
 
 @st.cache_data
+def load_operations_from_cache():
+    """Load pre-generated operations analytics from cache file"""
+    import json
+    import os
+    
+    cache_file = 'operations_cache.json'
+    
+    if not os.path.exists(cache_file):
+        st.warning(f"⚠️ Operations cache file not found. Please run `generate_operations_cache.py` first to generate operations data.")
+        return {}
+    
+    try:
+        with open(cache_file, 'r') as f:
+            operations_cache = json.load(f)
+        
+        # Convert back to appropriate formats
+        operations_data = {}
+        
+        # 1. BCG Matrix Data
+        if 'bcg_data' in operations_cache and operations_cache['bcg_data']:
+            bcg_dict = operations_cache['bcg_data']
+            if bcg_dict and 'districts' in bcg_dict:
+                bcg_df = pd.DataFrame({
+                    'district': bcg_dict['districts'],
+                    'total_enrollments': bcg_dict['total_enrollments'],
+                    'total_updates': bcg_dict['total_updates']
+                })
+                operations_data['bcg_data'] = bcg_df
+            else:
+                operations_data['bcg_data'] = pd.DataFrame()
+        else:
+            operations_data['bcg_data'] = pd.DataFrame()
+        
+        # 2. BCG Chart (Plotly figure)
+        if 'bcg_chart' in operations_cache and operations_cache['bcg_chart']:
+            import plotly.io as pio
+            operations_data['bcg_chart'] = pio.from_json(operations_cache['bcg_chart'])
+        else:
+            operations_data['bcg_chart'] = None
+        
+        # 3. Mobile Van Priority Data
+        if 'van_data' in operations_cache and operations_cache['van_data']:
+            van_dict = operations_cache['van_data']
+            if van_dict and 'districts' in van_dict:
+                van_df = pd.DataFrame({
+                    'district': van_dict['districts'],
+                    'pincode': [int(p) if p.isdigit() else p for p in van_dict['pincodes']],
+                    'total_enrollments': van_dict['total_enrollments'],
+                    'total_updates': van_dict['total_updates'],
+                    'total_activity': van_dict['total_activity'],
+                    'van_priority': van_dict['van_priority']
+                })
+                operations_data['van_data'] = van_df
+            else:
+                operations_data['van_data'] = pd.DataFrame()
+        else:
+            operations_data['van_data'] = pd.DataFrame()
+        
+        # 4. Mobile Van Chart (Plotly figure)
+        if 'van_chart' in operations_cache and operations_cache['van_chart']:
+            import plotly.io as pio
+            operations_data['van_chart'] = pio.from_json(operations_cache['van_chart'])
+        else:
+            operations_data['van_chart'] = None
+        
+        # 5. Center Productivity Data
+        if 'productivity_data' in operations_cache and operations_cache['productivity_data']:
+            prod_dict = operations_cache['productivity_data']
+            if prod_dict and 'districts' in prod_dict:
+                prod_df = pd.DataFrame({
+                    'district': prod_dict['districts'],
+                    'pincode': [int(p) if p.isdigit() else p for p in prod_dict['pincodes']],
+                    'total_activity': prod_dict['total_activity']
+                })
+                operations_data['productivity_data'] = prod_df
+            else:
+                operations_data['productivity_data'] = pd.DataFrame()
+        else:
+            operations_data['productivity_data'] = pd.DataFrame()
+        
+        # 6. Productivity Chart (Plotly figure)
+        if 'productivity_chart' in operations_cache and operations_cache['productivity_chart']:
+            import plotly.io as pio
+            operations_data['productivity_chart'] = pio.from_json(operations_cache['productivity_chart'])
+        else:
+            operations_data['productivity_chart'] = None
+        
+        # 7. Weekly Capacity Data
+        if 'weekly_data' in operations_cache and operations_cache['weekly_data']:
+            weekly_dict = operations_cache['weekly_data']
+            if weekly_dict and 'days' in weekly_dict:
+                weekly_df = pd.DataFrame({
+                    'day_of_week': weekly_dict['days'],
+                    'total_activity': weekly_dict['total_activity']
+                })
+                operations_data['weekly_data'] = weekly_df
+            else:
+                operations_data['weekly_data'] = pd.DataFrame()
+        else:
+            operations_data['weekly_data'] = pd.DataFrame()
+        
+        # 8. Weekly Chart (Plotly figure)
+        if 'weekly_chart' in operations_cache and operations_cache['weekly_chart']:
+            import plotly.io as pio
+            operations_data['weekly_chart'] = pio.from_json(operations_cache['weekly_chart'])
+        else:
+            operations_data['weekly_chart'] = None
+        
+        # 9. Growth Velocity Data
+        if 'velocity_data' in operations_cache and operations_cache['velocity_data']:
+            vel_dict = operations_cache['velocity_data']
+            if vel_dict and 'dates' in vel_dict:
+                vel_df = pd.DataFrame({
+                    'date': pd.to_datetime(vel_dict['dates']),
+                    'district': vel_dict['districts'],
+                    'total_enrollments': vel_dict['total_enrollments']
+                })
+                operations_data['velocity_data'] = vel_df
+            else:
+                operations_data['velocity_data'] = pd.DataFrame()
+        else:
+            operations_data['velocity_data'] = pd.DataFrame()
+        
+        # 10. Velocity Chart (Plotly figure)
+        if 'velocity_chart' in operations_cache and operations_cache['velocity_chart']:
+            import plotly.io as pio
+            operations_data['velocity_chart'] = pio.from_json(operations_cache['velocity_chart'])
+        else:
+            operations_data['velocity_chart'] = None
+        
+        # Display cache info in sidebar
+        if 'metadata' in operations_cache:
+            metadata = operations_cache['metadata']
+            generated_at = pd.to_datetime(metadata['generated_at']).strftime('%Y-%m-%d %H:%M:%S')
+            print(f"  ✓ Loaded operations data from cache (generated: {generated_at})")
+        
+        return operations_data
+        
+    except Exception as e:
+        st.error(f"❌ Error loading operations cache: {str(e)}")
+        return {}
+
+
+@st.cache_data
 def load_ml_predictions_from_cache():
     """Load pre-generated ML predictions from cache file"""
     import json
@@ -380,6 +524,11 @@ def preload_all_charts(_df_enrol, _df_bio, _df_demo):
     trends_data = load_trends_from_cache()
     charts.update(trends_data)
     print("  ✓ Trends analytics loaded from cache")
+    
+    # Load Operations Analytics from Cache (FAST!)
+    operations_data = load_operations_from_cache()
+    charts.update(operations_data)
+    print("  ✓ Operations analytics loaded from cache")
     
     # Load ML Predictions from Cache (FAST!)
     ml_predictions = load_ml_predictions_from_cache()
@@ -576,7 +725,7 @@ if page == "Executive Summary":
 # --- PAGE 2: OPERATIONS ---
 elif page == "Operations & Logistics":
     st.title("Operations & Resource Planning")
-    st.markdown("**Comprehensive operational intelligence for infrastructure allocation and capacity optimization**")
+    st.markdown("**Comprehensive operational intelligence for infrastructure allocation and capacity optimization** • _Data loaded from cache_")
     
     # VISUALIZATION 1: BCG Service Strain Matrix
     st.markdown("---")
@@ -598,25 +747,11 @@ elif page == "Operations & Logistics":
             - **Bottom-Left (Dormant):** Low priority, monitor only
             """)
     
-    bcg_data = adv_engine.get_bcg_matrix_data()
-    if not bcg_data.empty:
-        fig_bcg = px.scatter(
-            bcg_data, 
-            x='total_enrollments', 
-            y='total_updates',
-            text='district',
-            labels={'total_enrollments': 'New Enrollment Demand', 'total_updates': 'Update Request Load'},
-            template="plotly_white",
-            height=600
-        )
-        fig_bcg.update_traces(textposition='top center', textfont_size=8)
-        fig_bcg.add_hline(y=bcg_data['total_updates'].median(), line_dash="dot", 
-                         annotation_text="High Staff Needed", line_color="red")
-        fig_bcg.add_vline(x=bcg_data['total_enrollments'].median(), line_dash="dot", 
-                         annotation_text="High Kits Needed", line_color="blue")
-        st.plotly_chart(fig_bcg, use_container_width=True)
+    bcg_chart = preloaded_charts.get('bcg_chart')
+    if bcg_chart:
+        st.plotly_chart(bcg_chart, use_container_width=True)
     else:
-        st.warning("⚠️ Insufficient data for BCG matrix")
+        st.warning("⚠️ BCG matrix not available. Run `python generate_operations_cache.py` to generate.")
     
     # VISUALIZATION 2: Mobile Van Priority Solver
     st.markdown("---")
@@ -637,24 +772,11 @@ elif page == "Operations & Logistics":
             - Prioritize by bubble size (larger = more urgent)
             """)
     
-    van_data = adv_engine.get_mobile_van_priority_data()
-    if not van_data.empty:
-        fig_van = px.scatter(
-            van_data, 
-            x='district', 
-            y='total_updates',
-            color='van_priority',
-            size='total_activity',
-            hover_data=['pincode'],
-            labels={'total_updates': 'Update Requests', 'district': 'District'},
-            color_discrete_map={True: 'red', False: 'royalblue'},
-            template="plotly_white",
-            height=600
-        )
-        fig_van.update_xaxes(tickangle=45)
-        st.plotly_chart(fig_van, use_container_width=True)
+    van_chart = preloaded_charts.get('van_chart')
+    if van_chart:
+        st.plotly_chart(van_chart, use_container_width=True)
     else:
-        st.warning("No mobile van priority data available")
+        st.warning("⚠️ Mobile van priority data not available. Run `python generate_operations_cache.py` to generate.")
     
     # VISUALIZATION 3: Center Productivity Rankings
     st.markdown("---")
@@ -674,22 +796,11 @@ elif page == "Operations & Logistics":
             - Identify if multiple top centers cluster in same district
             """)
     
-    prod_data = adv_engine.get_center_productivity_data(top_n=20)
-    if not prod_data.empty:
-        prod_data['pincode_label'] = prod_data['pincode'].astype(str)
-        fig_prod = px.bar(
-            prod_data, 
-            x='pincode_label', 
-            y='total_activity',
-            color='district',
-            labels={'total_activity': 'Total Requests Handled', 'pincode_label': 'Pincode/Center ID'},
-            template="plotly_white",
-            height=500
-        )
-        fig_prod.update_xaxes(tickangle=45)
-        st.plotly_chart(fig_prod, use_container_width=True)
+    productivity_chart = preloaded_charts.get('productivity_chart')
+    if productivity_chart:
+        st.plotly_chart(productivity_chart, use_container_width=True)
     else:
-        st.warning("No center productivity data available")
+        st.warning("⚠️ Center productivity data not available. Run `python generate_operations_cache.py` to generate.")
     
     # VISUALIZATION 4: Weekly Capacity Utilization Heatmap
     st.markdown("---")
@@ -709,20 +820,11 @@ elif page == "Operations & Logistics":
             - Optimize shift schedules to match demand curve
             """)
     
-    weekly_data = adv_engine.get_weekly_capacity_data()
-    if not weekly_data.empty:
-        fig_heat = px.imshow(
-            [weekly_data['total_activity'].values],
-            x=weekly_data['day_of_week'].values,
-            y=['Avg Activity'],
-            color_continuous_scale='Viridis',
-            labels={'color': 'Activity Level'},
-            template="plotly_white",
-            height=300
-        )
-        st.plotly_chart(fig_heat, use_container_width=True)
+    weekly_chart = preloaded_charts.get('weekly_chart')
+    if weekly_chart:
+        st.plotly_chart(weekly_chart, use_container_width=True)
     else:
-        st.warning("No weekly capacity data available")
+        st.warning("⚠️ Weekly capacity data not available. Run `python generate_operations_cache.py` to generate.")
     
     # VISUALIZATION 5: Growth Velocity Tracking
     st.markdown("---")
@@ -742,21 +844,11 @@ elif page == "Operations & Logistics":
             - **Dips:** Identify and address sudden drops immediately
             """)
     
-    velocity_data = adv_engine.get_growth_velocity_data(top_n=5)
-    if not velocity_data.empty:
-        fig_vel = px.line(
-            velocity_data, 
-            x='date', 
-            y='total_enrollments',
-            color='district',
-            labels={'total_enrollments': 'Enrollment Volume', 'date': 'Date'},
-            template="plotly_white",
-            height=500
-        )
-        fig_vel.update_traces(line_shape='spline')
-        st.plotly_chart(fig_vel, use_container_width=True)
+    velocity_chart = preloaded_charts.get('velocity_chart')
+    if velocity_chart:
+        st.plotly_chart(velocity_chart, use_container_width=True)
     else:
-        st.warning("⚠️ No growth velocity data available")
+        st.warning("⚠️ Growth velocity data not available. Run `python generate_operations_cache.py` to generate.")
 
 
 # --- PAGE 3: TRENDS ---
