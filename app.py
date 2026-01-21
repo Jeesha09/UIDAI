@@ -438,6 +438,138 @@ def load_operations_from_cache():
 
 
 @st.cache_data
+def load_security_from_cache():
+    """Load pre-generated security analytics from cache file"""
+    import json
+    import os
+    
+    cache_file = 'security_cache.json'
+    
+    if not os.path.exists(cache_file):
+        st.warning(f"⚠️ Security cache file not found. Please run `generate_security_cache.py` first to generate security data.")
+        return {}
+    
+    try:
+        with open(cache_file, 'r') as f:
+            security_cache = json.load(f)
+        
+        # Convert back to appropriate formats
+        security_data = {}
+        
+        # 1. Benford's Law Data
+        if 'benford_data' in security_cache and security_cache['benford_data']:
+            benford_dict = security_cache['benford_data']
+            if benford_dict and 'digits' in benford_dict:
+                benford_df = pd.DataFrame({
+                    'digit': benford_dict['digits'],
+                    'actual_freq': benford_dict['actual_freq'],
+                    'benford_freq': benford_dict['benford_freq']
+                })
+                security_data['benford_distribution'] = benford_df
+                security_data['benford_deviation_score'] = benford_dict['deviation_score']
+                security_data['benford_is_suspicious'] = benford_dict['is_suspicious']
+            else:
+                security_data['benford_distribution'] = pd.DataFrame()
+                security_data['benford_deviation_score'] = 0.0
+                security_data['benford_is_suspicious'] = False
+        else:
+            security_data['benford_distribution'] = pd.DataFrame()
+            security_data['benford_deviation_score'] = 0.0
+            security_data['benford_is_suspicious'] = False
+        
+        # 2. Benford Chart (Plotly figure)
+        if 'benford_chart' in security_cache and security_cache['benford_chart']:
+            import plotly.io as pio
+            security_data['benford_chart'] = pio.from_json(security_cache['benford_chart'])
+        else:
+            security_data['benford_chart'] = None
+        
+        # 3. Statistical Outliers Data
+        if 'outliers_data' in security_cache and security_cache['outliers_data']:
+            outliers_dict = security_cache['outliers_data']
+            if outliers_dict and 'dates' in outliers_dict:
+                outliers_df = pd.DataFrame({
+                    'date': pd.to_datetime(outliers_dict['dates']),
+                    'total_activity': outliers_dict['total_activity'],
+                    'is_anomaly': outliers_dict['is_anomaly'],
+                    'threshold': outliers_dict['threshold']
+                })
+                security_data['outliers_data'] = outliers_df
+            else:
+                security_data['outliers_data'] = pd.DataFrame()
+        else:
+            security_data['outliers_data'] = pd.DataFrame()
+        
+        # 4. Outliers Chart (Plotly figure)
+        if 'outliers_chart' in security_cache and security_cache['outliers_chart']:
+            import plotly.io as pio
+            security_data['outliers_chart'] = pio.from_json(security_cache['outliers_chart'])
+        else:
+            security_data['outliers_chart'] = None
+        
+        # 5. Anomaly Count
+        security_data['anomaly_count'] = security_cache.get('anomaly_count', 0)
+        
+        # 6. Volatility Analysis Data
+        if 'volatility_data' in security_cache and security_cache['volatility_data']:
+            vol_dict = security_cache['volatility_data']
+            if vol_dict and 'pincodes' in vol_dict:
+                vol_df = pd.DataFrame({
+                    'pincode': vol_dict['pincodes'],
+                    'mean': vol_dict['mean'],
+                    'std': vol_dict['std'],
+                    'count': vol_dict['count'],
+                    'variance_score': vol_dict['variance_score']
+                })
+                security_data['volatility_data'] = vol_df
+            else:
+                security_data['volatility_data'] = pd.DataFrame()
+        else:
+            security_data['volatility_data'] = pd.DataFrame()
+        
+        # 7. Volatility Chart (Plotly figure)
+        if 'volatility_chart' in security_cache and security_cache['volatility_chart']:
+            import plotly.io as pio
+            security_data['volatility_chart'] = pio.from_json(security_cache['volatility_chart'])
+        else:
+            security_data['volatility_chart'] = None
+        
+        # 8. State Variance Data
+        if 'state_variance_data' in security_cache and security_cache['state_variance_data']:
+            state_dict = security_cache['state_variance_data']
+            if state_dict and 'states' in state_dict:
+                state_df = pd.DataFrame({
+                    'state': state_dict['states'],
+                    'district': state_dict['districts'],
+                    'total_activity': state_dict['total_activity']
+                })
+                security_data['state_variance_data'] = state_df
+            else:
+                security_data['state_variance_data'] = pd.DataFrame()
+        else:
+            security_data['state_variance_data'] = pd.DataFrame()
+        
+        # 9. State Variance Chart (Plotly figure)
+        if 'state_variance_chart' in security_cache and security_cache['state_variance_chart']:
+            import plotly.io as pio
+            security_data['state_variance_chart'] = pio.from_json(security_cache['state_variance_chart'])
+        else:
+            security_data['state_variance_chart'] = None
+        
+        # Display cache info in sidebar
+        if 'metadata' in security_cache:
+            metadata = security_cache['metadata']
+            generated_at = pd.to_datetime(metadata['generated_at']).strftime('%Y-%m-%d %H:%M:%S')
+            print(f"  ✓ Loaded security data from cache (generated: {generated_at})")
+        
+        return security_data
+        
+    except Exception as e:
+        st.error(f"❌ Error loading security cache: {str(e)}")
+        return {}
+
+
+@st.cache_data
 def load_ml_predictions_from_cache():
     """Load pre-generated ML predictions from cache file"""
     import json
@@ -529,6 +661,11 @@ def preload_all_charts(_df_enrol, _df_bio, _df_demo):
     operations_data = load_operations_from_cache()
     charts.update(operations_data)
     print("  ✓ Operations analytics loaded from cache")
+    
+    # Load Security Analytics from Cache (FAST!)
+    security_data = load_security_from_cache()
+    charts.update(security_data)
+    print("  ✓ Security analytics loaded from cache")
     
     # Load ML Predictions from Cache (FAST!)
     ml_predictions = load_ml_predictions_from_cache()
@@ -1216,7 +1353,7 @@ elif page == "Demographics & Policy":
 # --- PAGE 5: SECURITY ---
 elif page == "Security & Integrity":
     st.title("Security & Forensic Audit")
-    st.markdown("**Comprehensive fraud detection and data integrity analysis**")
+    st.markdown("**Comprehensive fraud detection and data integrity analysis** • _Data loaded from cache_")
     
     # VISUALIZATION 1: Global Benford's Law Analysis
     st.markdown("---")
@@ -1242,44 +1379,20 @@ elif page == "Security & Integrity":
             - Review data entry processes if systematic deviations found
             """)
     
-    benford_global = adv_engine.get_benfords_law_global()
+    benford_chart = preloaded_charts.get('benford_chart')
+    deviation = preloaded_charts.get('benford_deviation_score', 0.0)
+    is_suspicious = preloaded_charts.get('benford_is_suspicious', False)
     
-    if "error" not in benford_global:
-        deviation = benford_global['deviation_score']
-        is_suspicious = benford_global['is_suspicious']
-        
+    if benford_chart:
         if is_suspicious:
             st.error(f"⚠️ HIGH RISK DETECTED | Deviation Score: {deviation:.3f}")
             st.warning("The data shows significant deviation from Benford's Law. Recommend immediate audit.")
         else:
             st.success(f"✓ Normal Organic Behavior | Deviation Score: {deviation:.3f}")
         
-        # Plot
-        df_ben = benford_global['distribution']
-        fig_ben = go.Figure()
-        fig_ben.add_trace(go.Bar(
-            x=df_ben['digit'], 
-            y=df_ben['actual_freq'], 
-            name='Your Data (Actual)', 
-            marker_color='royalblue'
-        ))
-        fig_ben.add_trace(go.Scatter(
-            x=df_ben['digit'], 
-            y=df_ben['benford_freq'], 
-            mode='lines+markers',
-            name="Benford's Law (Theoretical)", 
-            line=dict(color='red', width=3)
-        ))
-        fig_ben.update_layout(
-            xaxis_title="Leading Digit",
-            yaxis_title="Relative Frequency",
-            template="plotly_white",
-            height=500,
-            xaxis=dict(tickmode='linear', tick0=1, dtick=1)
-        )
-        st.plotly_chart(fig_ben, use_container_width=True)
+        st.plotly_chart(benford_chart, use_container_width=True)
     else:
-        st.warning("Insufficient data for Benford's Law analysis")
+        st.warning("⚠️ Benford's Law analysis not available. Run `python generate_security_cache.py` to generate.")
     
     # VISUALIZATION 2: Statistical Outliers (Time Series)
     st.markdown("---")
@@ -1306,45 +1419,14 @@ elif page == "Security & Integrity":
             - Review centers active during anomalous periods
             """)
     
-    outliers_data = adv_engine.get_statistical_outliers()
+    outliers_chart = preloaded_charts.get('outliers_chart')
+    anomaly_count = preloaded_charts.get('anomaly_count', 0)
     
-    if not outliers_data.empty:
-        anomaly_count = outliers_data['is_anomaly'].sum()
+    if outliers_chart:
         st.metric("Suspicious Activity Days Detected", anomaly_count)
-        
-        fig_outliers = px.scatter(
-            outliers_data, 
-            x='date', 
-            y='total_activity',
-            color='is_anomaly',
-            color_discrete_map={True: 'red', False: 'gray'},
-            labels={'total_activity': 'Daily Volume', 'is_anomaly': 'Suspicious Spike'},
-            template="plotly_white",
-            height=500
-        )
-        
-        # Add trend line
-        fig_outliers.add_trace(go.Scatter(
-            x=outliers_data['date'], 
-            y=outliers_data['total_activity'],
-            mode='lines',
-            line=dict(color='lightgray', width=1),
-            showlegend=False,
-            hoverinfo='skip'
-        ))
-        
-        # Add threshold line
-        if 'threshold' in outliers_data.columns:
-            fig_outliers.add_hline(
-                y=outliers_data['threshold'].iloc[0],
-                line_dash="dash",
-                line_color="orange",
-                annotation_text="Anomaly Threshold"
-            )
-        
-        st.plotly_chart(fig_outliers, use_container_width=True)
+        st.plotly_chart(outliers_chart, use_container_width=True)
     else:
-        st.info("Insufficient time-series data for outlier detection")
+        st.warning("⚠️ Statistical outliers analysis not available. Run `python generate_security_cache.py` to generate.")
     
     # VISUALIZATION 3: Volatility Analysis
     st.markdown("---")
@@ -1371,34 +1453,25 @@ elif page == "Security & Integrity":
             - Implement monitoring for consistently erratic centers
             """)
     
-    volatility_data = adv_engine.get_volatility_analysis(top_n=20)
+    volatility_chart = preloaded_charts.get('volatility_chart')
+    volatility_data = preloaded_charts.get('volatility_data', pd.DataFrame())
     
-    if not volatility_data.empty:
-        fig_volatility = px.bar(
-            volatility_data,
-            x='pincode',
-            y='variance_score',
-            color='variance_score',
-            color_continuous_scale='Reds',
-            labels={'pincode': 'Pincode', 'variance_score': 'Erratic Behavior Score'},
-            template="plotly_white",
-            height=500
-        )
-        fig_volatility.update_xaxes(tickangle=45)
-        st.plotly_chart(fig_volatility, use_container_width=True)
+    if volatility_chart:
+        st.plotly_chart(volatility_chart, use_container_width=True)
         
         # Display detailed table
-        with st.expander("View Detailed Volatility Metrics"):
-            st.dataframe(
-                volatility_data[['pincode', 'mean', 'std', 'variance_score']].style.format({
-                    'mean': '{:.1f}',
-                    'std': '{:.1f}',
-                    'variance_score': '{:.3f}'
-                }),
-                use_container_width=True
-            )
+        if not volatility_data.empty:
+            with st.expander("View Detailed Volatility Metrics"):
+                st.dataframe(
+                    volatility_data[['pincode', 'mean', 'std', 'variance_score']].style.format({
+                        'mean': '{:.1f}',
+                        'std': '{:.1f}',
+                        'variance_score': '{:.3f}'
+                    }),
+                    use_container_width=True
+                )
     else:
-        st.info("Insufficient data for volatility analysis")
+        st.warning("⚠️ Volatility analysis not available. Run `python generate_security_cache.py` to generate.")
     
     # VISUALIZATION 4: State Variance (Box Plot)
     st.markdown("---")
@@ -1424,23 +1497,12 @@ elif page == "Security & Integrity":
             - Compare resource allocation across high/low variance states
             """)
     
-    state_variance = adv_engine.get_state_variance_data()
+    state_variance_chart = preloaded_charts.get('state_variance_chart')
     
-    if not state_variance.empty and len(state_variance['state'].unique()) > 1:
-        fig_variance = px.box(
-            state_variance,
-            x='state',
-            y='total_activity',
-            color='state',
-            points="outliers",
-            labels={'total_activity': 'Activity Level', 'state': 'State Name'},
-            template="plotly_white",
-            height=600
-        )
-        fig_variance.update_xaxes(tickangle=45)
-        st.plotly_chart(fig_variance, use_container_width=True)
+    if state_variance_chart:
+        st.plotly_chart(state_variance_chart, use_container_width=True)
     else:
-        st.info("Insufficient cross-dataset data for anomaly analysis")
+        st.warning("⚠️ State variance analysis not available. Run `python generate_security_cache.py` to generate.")
 
 
 # --- PAGE 6: ML PREDICTIONS & INTELLIGENCE ---
