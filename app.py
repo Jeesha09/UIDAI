@@ -646,6 +646,40 @@ def load_ml_predictions_from_cache():
         return {}
 
 
+
+@st.cache_data
+def load_demographics_from_cache():
+    """Load pre-generated demographics analytics from cache file"""
+    import json
+    import os
+    
+    cache_file = 'demographics_cache.json'
+    
+    if not os.path.exists(cache_file):
+        st.warning(f"⚠️ Demographics cache file not found. Please run `generate_demographics_cache.py` first to generate demographics data.")
+        return {}
+    
+    try:
+        with open(cache_file, 'r') as f:
+            demographics_cache = json.load(f)
+        
+        # Display cache info in sidebar
+        if 'metadata' in demographics_cache:
+            metadata = demographics_cache['metadata']
+            generated_at = pd.to_datetime(metadata['generated_at']).strftime('%Y-%m-%d %H:%M:%S')
+            print(f"  ✓ Loaded demographics data from cache (generated: {generated_at})")
+        
+        return demographics_cache
+        
+    except Exception as e:
+        st.error(f"❌ Error loading demographics cache: {str(e)}")
+        return {}
+
+
+
+
+
+
 def preload_all_charts(_df_enrol, _df_bio, _df_demo):
     """Load pre-generated visualizations and predictions from cache files"""
     charts = {}
@@ -671,6 +705,11 @@ def preload_all_charts(_df_enrol, _df_bio, _df_demo):
     ml_predictions = load_ml_predictions_from_cache()
     charts.update(ml_predictions)
     print("  ✓ ML predictions loaded from cache")
+
+    # Load Demographics Analytics from Cache (FAST!)
+    demographics_data = load_demographics_from_cache()
+    charts.update(demographics_data)
+    print("  ✓ Demographics analytics loaded from cache")
     
     print("All cached data ready!")
     return charts
@@ -1229,125 +1268,158 @@ elif page == "Trends & Forecasting":
 # --- PAGE 4: DEMOGRAPHICS ---
 elif page == "Demographics & Policy":
     st.title("📊 Demographics & Behavior Analysis")
-    st.markdown("**Features: 4A, 5A, 5C, 4B, 8B**")
+    st.markdown("**Comprehensive age distribution and behavioral insights** • _Data loaded from cache_")
     
-    # District filter for consistency
-    districts = sorted(df_enrol['district'].dropna().unique())[:200]
+    # Get cached data
+    age_distribution = preloaded_charts.get('age_distribution', {})
+    health_scores = preloaded_charts.get('health_scores', {})
+    lag_distributions = preloaded_charts.get('lag_distributions', {})
+    age_growth = preloaded_charts.get('age_growth', {})
+    state_comparisons = preloaded_charts.get('state_comparisons', {})
+    
+    if not age_distribution:
+        st.error("⚠️ Demographics data not available. Run `python generate_demographics_cache.py` to generate.")
+        st.stop()
+    
+    # District filter
+    districts = sorted(list(age_distribution.keys()))
     selected_dist = st.selectbox("Select District", districts, key="dist_filter")
     
-    # Row 1: 4A Age Distribution + 5A Health Score
+    # ===== CHART 1: Age Distribution =====
     col1, col2 = st.columns(2)
     
     with col1:
         st.subheader("**Age Group Distribution**")
-        age_data = {
-            '0-5 years': df_enrol[df_enrol['district'] == selected_dist]['age_0_5'].sum(),
-            '5-18 years': df_enrol[df_enrol['district'] == selected_dist]['age_5_17'].sum(),
-            '18+ years': df_enrol[df_enrol['district'] == selected_dist]['age_18_greater'].sum()
-        }
         
-        fig_4a = px.pie(
-            names=list(age_data.keys()), 
-            values=list(age_data.values()), 
-            hole=0.5,
-            color_discrete_sequence=['#FF6B6B', '#4ECDC4', '#45B7D1']
-        )
-        fig_4a.update_traces(textinfo='label+percent', textfont_size=14)
-        fig_4a.update_layout(showlegend=True, height=400)
-        st.plotly_chart(fig_4a, use_container_width=True)
+        if selected_dist in age_distribution:
+            age_data = age_distribution[selected_dist]
+            
+            fig_4a = px.pie(
+                names=list(age_data.keys()), 
+                values=list(age_data.values()), 
+                hole=0.5,
+                color_discrete_sequence=['#FF6B6B', '#4ECDC4', '#45B7D1']
+            )
+            fig_4a.update_traces(textinfo='label+percent', textfont_size=14)
+            fig_4a.update_layout(showlegend=True, height=400)
+            st.plotly_chart(fig_4a, use_container_width=True)
+        else:
+            st.warning("No data for selected district")
     
+    # ===== CHART 2: Health Score =====
     with col2:
         st.subheader("**Health Score** (Update-to-Enrollment)")
         
-        total_enrol = df_enrol[df_enrol['district'] == selected_dist][['age_0_5', 'age_5_17', 'age_18_greater']].sum().sum()
-        total_updates = (df_demo[df_demo['district'] == selected_dist][['demo_age_5_17', 'demo_age_17_']].sum().sum() + 
-                        df_bio[df_bio['district'] == selected_dist][['bio_age_5_17', 'bio_age_17_']].sum().sum())
-        
-        health_score = min((total_updates / total_enrol * 100) if total_enrol > 0 else 0, 100)
-        
-        fig_5a = go.Figure(go.Indicator(
-            mode="gauge+number+delta",
-            value=health_score,
-            number={'font': {'size': 50}},
-            gauge={
-                'axis': {'range': [0, 100]},
-                'bar': {'color': "#3498db"},
-                'steps': [
-                    {'range': [0, 30], 'color': "#ffcdd2"},
-                    {'range': [30, 70], 'color': "#fff9c4"}, 
-                    {'range': [70, 100], 'color': "#c8e6c9"}
-                ],
-                'threshold': {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 90}
-            }
-        ))
-        fig_5a.update_layout(height=400, margin=dict(l=20, r=20))
-        st.plotly_chart(fig_5a, use_container_width=True)
-        
-        st.metric("Total Enrollment", f"{total_enrol:,.0f}", delta=f"{total_updates:,.0f} Updates")
+        if selected_dist in health_scores:
+            health_data = health_scores[selected_dist]
+            health_score = health_data['health_score']
+            
+            fig_5a = go.Figure(go.Indicator(
+                mode="gauge+number+delta",
+                value=health_score,
+                number={'font': {'size': 50}},
+                gauge={
+                    'axis': {'range': [0, 100]},
+                    'bar': {'color': "#3498db"},
+                    'steps': [
+                        {'range': [0, 30], 'color': "#ffcdd2"},
+                        {'range': [30, 70], 'color': "#fff9c4"}, 
+                        {'range': [70, 100], 'color': "#c8e6c9"}
+                    ],
+                    'threshold': {'line': {'color': "red", 'width': 4}, 'thickness': 0.75, 'value': 90}
+                }
+            ))
+            fig_5a.update_layout(height=400, margin=dict(l=20, r=20))
+            st.plotly_chart(fig_5a, use_container_width=True)
+            
+            st.metric(
+                "Total Enrollment", 
+                f"{health_data['total_enrollment']:,.0f}", 
+                delta=f"{health_data['total_updates']:,.0f} Updates"
+            )
+        else:
+            st.warning("No health score data for selected district")
     
-    # Row 2: 5C Update Lag Analysis
+    # ===== CHART 3: Update Lag Distribution =====
     st.markdown("---")
     col1, col2 = st.columns([0.6, 0.4])
     
     with col1:
         st.subheader("**Update Lag Distribution**")
-        age_options = ['All Ages', '5-18 years', '18+ years']
+        age_options = list(lag_distributions.keys())
         selected_age = st.selectbox("Filter by Age Group", age_options)
         
-        # Simulate lag data (replace with real data from your engines)
-        lag_data = pd.concat([
-            pd.Series(np.random.exponential(30, 1000), name='demo_lag'),
-            pd.Series(np.random.exponential(45, 800), name='bio_lag')
-        ]).dropna()
-        
-        fig_5c = px.histogram(lag_data, nbins=50, color_discrete_sequence=['#9b59b6'])
-        fig_5c.add_vline(lag_data.mean(), line_dash="dash", line_color="red", 
-                        annotation_text=f"Mean: {lag_data.mean():.1f} days")
-        fig_5c.update_layout(height=400)
-        st.plotly_chart(fig_5c, use_container_width=True)
+        if selected_age in lag_distributions:
+            lag_data = pd.Series(lag_distributions[selected_age]['values'])
+            mean_lag = lag_distributions[selected_age]['mean']
+            
+            fig_5c = px.histogram(lag_data, nbins=50, color_discrete_sequence=['#9b59b6'])
+            fig_5c.add_vline(mean_lag, line_dash="dash", line_color="red", 
+                            annotation_text=f"Mean: {mean_lag:.1f} days")
+            fig_5c.update_layout(height=400, xaxis_title="Days to Update", yaxis_title="Count")
+            st.plotly_chart(fig_5c, use_container_width=True)
+        else:
+            st.warning("No lag data available")
     
-    # Row 3: 4B Age Growth + 8B Behavioral
+    # ===== CHART 4: Age Growth Over Time =====
+    st.markdown("---")
     col1, col2 = st.columns(2)
     
     with col1:
         st.subheader("**Age Group Growth Over Time**")
         
-        growth_data = df_enrol[df_enrol['district'] == selected_dist].groupby('date')[
-            ['age_0_5', 'age_5_17', 'age_18_greater']
-        ].sum().reset_index().rename(columns={
-            'age_0_5': '0-5 years', 'age_5_17': '5-18 years', 'age_18_greater': '18+ years'
-        })
-        
-        if not growth_data.empty:
-            fig_4b = px.area(growth_data, x='date', y=['0-5 years', '5-18 years', '18+ years'],
-                           color_discrete_sequence=['#FF6B6B', '#4ECDC4', '#45B7D1'])
-            fig_4b.update_layout(height=400, legend_orientation="h")
+        if selected_dist in age_growth:
+            growth_data_dict = age_growth[selected_dist]
+            growth_df = pd.DataFrame({
+                'date': pd.to_datetime(growth_data_dict['dates']),
+                '0-5 years': growth_data_dict['age_0_5'],
+                '5-18 years': growth_data_dict['age_5_17'],
+                '18+ years': growth_data_dict['age_18_greater']
+            })
+            
+            fig_4b = px.area(
+                growth_df, 
+                x='date', 
+                y=['0-5 years', '5-18 years', '18+ years'],
+                color_discrete_sequence=['#FF6B6B', '#4ECDC4', '#45B7D1']
+            )
+            fig_4b.update_layout(height=400, legend_orientation="h", xaxis_title="Date", yaxis_title="Enrollment Count")
             st.plotly_chart(fig_4b, use_container_width=True)
         else:
-            st.warning("No time-series data available")
+            st.warning("No time-series data available for selected district")
     
+    # ===== CHART 5: Behavioral Segmentation =====
     with col2:
         st.subheader("**Behavioral Segmentation**")
-        states = sorted(df_enrol['state'].dropna().unique())
-        state_a = st.selectbox("State A", states, key="state_a")
-        state_b = st.selectbox("State B", states[1:], key="state_b")
+        states = sorted(list(state_comparisons.keys()))
         
-        # Calculate demo vs bio updates
-        demo_a = df_demo[df_demo['state'] == state_a][['demo_age_5_17', 'demo_age_17_']].sum().sum()
-        bio_a = df_bio[df_bio['state'] == state_a][['bio_age_5_17', 'bio_age_17_']].sum().sum()
-        demo_b = df_demo[df_demo['state'] == state_b][['demo_age_5_17', 'demo_age_17_']].sum().sum()
-        bio_b = df_bio[df_bio['state'] == state_b][['bio_age_5_17', 'bio_age_17_']].sum().sum()
+        state_a = st.selectbox("State A", states, key="state_a")
+        state_b = st.selectbox("State B", states[1:] if len(states) > 1 else states, key="state_b")
+        
+        demo_a = state_comparisons.get(state_a, {}).get('demo_updates', 0)
+        bio_a = state_comparisons.get(state_a, {}).get('bio_updates', 0)
+        demo_b = state_comparisons.get(state_b, {}).get('demo_updates', 0)
+        bio_b = state_comparisons.get(state_b, {}).get('bio_updates', 0)
         
         fig_8b = go.Figure()
-        fig_8b.add_trace(go.Bar(name='Demo Updates', x=[state_a, state_b], y=[demo_a, demo_b], 
-                               marker_color='#3498db', text=[f'{demo_a:,.0f}', f'{demo_b:,.0f}'], 
-                               textposition='outside'))
-        fig_8b.add_trace(go.Bar(name='Bio Updates', x=[state_a, state_b], y=[bio_a, bio_b], 
-                               marker_color='#e74c3c', text=[f'{bio_a:,.0f}', f'{bio_b:,.0f}'], 
-                               textposition='outside'))
-        fig_8b.update_layout(barmode='group', height=400)
+        fig_8b.add_trace(go.Bar(
+            name='Demo Updates', 
+            x=[state_a, state_b], 
+            y=[demo_a, demo_b], 
+            marker_color='#3498db', 
+            text=[f'{demo_a:,.0f}', f'{demo_b:,.0f}'], 
+            textposition='outside'
+        ))
+        fig_8b.add_trace(go.Bar(
+            name='Bio Updates', 
+            x=[state_a, state_b], 
+            y=[bio_a, bio_b], 
+            marker_color='#e74c3c', 
+            text=[f'{bio_a:,.0f}', f'{bio_b:,.0f}'], 
+            textposition='outside'
+        ))
+        fig_8b.update_layout(barmode='group', height=400, xaxis_title="State", yaxis_title="Update Count")
         st.plotly_chart(fig_8b, use_container_width=True)
-
 
 
 # --- PAGE 5: SECURITY ---

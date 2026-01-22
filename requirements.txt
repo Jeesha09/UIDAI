@@ -11,4 +11,4 @@ seaborn
 google-generativeai
 pandasai
 pyyaml
-
+pandasai-lite-llm
