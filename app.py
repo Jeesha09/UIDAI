@@ -676,8 +676,81 @@ def load_demographics_from_cache():
         return {}
 
 
-
-
+@st.cache_data
+def load_executive_from_cache():
+    """Load pre-generated executive summary from cache file"""
+    import json
+    import os
+    
+    cache_file = 'executive_cache.json'
+    
+    if not os.path.exists(cache_file):
+        st.warning(f"⚠️ Executive cache file not found. Please run `generate_executive_cache.py` first to generate executive summary data.")
+        return {}
+    
+    try:
+        with open(cache_file, 'r') as f:
+            executive_cache = json.load(f)
+        
+        # Convert back to appropriate formats
+        executive_data = {}
+        
+        # 1. Early Warning System
+        if 'early_warning' in executive_cache:
+            ew = executive_cache['early_warning']
+            executive_data['early_warning'] = {
+                'metric_value': ew['metric_value'],
+                'details_df': pd.DataFrame(ew['details_df'])
+            }
+        else:
+            executive_data['early_warning'] = {'metric_value': 0, 'details_df': pd.DataFrame()}
+        
+        # 2. Stagnation Detection
+        if 'stagnation' in executive_cache:
+            st_data = executive_cache['stagnation']
+            executive_data['stagnation'] = {
+                'total_stagnant': st_data['total_stagnant'],
+                'pincode_list': st_data['pincode_list']
+            }
+        else:
+            executive_data['stagnation'] = {'total_stagnant': 0, 'pincode_list': []}
+        
+        # 3. Benchmarks
+        if 'benchmarks' in executive_cache:
+            bm = executive_cache['benchmarks']
+            executive_data['benchmarks'] = {
+                'top_performers': pd.DataFrame(bm['top_performers']),
+                'bottom_performers': pd.DataFrame(bm['bottom_performers'])
+            }
+        else:
+            executive_data['benchmarks'] = {
+                'top_performers': pd.DataFrame(),
+                'bottom_performers': pd.DataFrame()
+            }
+        
+        # 4. Clusters
+        if 'clusters' in executive_cache and executive_cache['clusters']:
+            executive_data['clusters'] = pd.DataFrame(executive_cache['clusters'])
+        else:
+            executive_data['clusters'] = pd.DataFrame()
+        
+        # 5. Total Volume
+        executive_data['total_volume'] = executive_cache.get('total_volume', 0)
+        
+        # 6. Stats
+        executive_data['stats'] = executive_cache.get('stats', {
+            'total_enrollments': 0,
+            'total_districts': 0,
+            'total_states': 0
+        })
+        
+        print("  ✓ Executive summary loaded from cache")
+        
+        return executive_data
+        
+    except Exception as e:
+        st.error(f"❌ Error loading executive cache: {str(e)}")
+        return {}
 
 
 def preload_all_charts(_df_enrol, _df_bio, _df_demo):
@@ -685,6 +758,11 @@ def preload_all_charts(_df_enrol, _df_bio, _df_demo):
     charts = {}
     
     print("Loading cached data...")
+    
+    # Load Executive Summary from Cache (FAST!)
+    executive_data = load_executive_from_cache()
+    charts.update(executive_data)
+    print("  ✓ Executive summary loaded from cache")
     
     # Load Trends Analytics from Cache (FAST!)
     trends_data = load_trends_from_cache()
@@ -716,24 +794,24 @@ def preload_all_charts(_df_enrol, _df_bio, _df_demo):
 
 try:
     # Streamlit Cloud health check optimization
-    # Load data in background without blocking health check
+    # Load ALL data from cache files (no CSV loading!)
     if "data_loaded" not in st.session_state:
         # Create progress bar
-        progress_text = "Loading data and cached visualizations (trends & ML predictions from cache)..."
+        progress_text = "Loading all cached analytics (Executive Summary, Trends, Operations, ML, Demographics)..."
         progress_bar = st.progress(0, text=progress_text)
         
-        # Load data (20% progress)
-        progress_bar.progress(20, text="Loading CSV files...")
+        # Skip CSV loading - Load everything from cache
+        progress_bar.progress(20, text="Loading cached data...")
+        
+        # Load all cached data (20-100% progress)
+        progress_bar.progress(40, text="Loading Executive Summary, Trends & Operations from cache...")
+        preloaded_charts = preload_all_charts(None, None, None)
+        
+        progress_bar.progress(80, text="Finalizing...")
+        
+        # Load CSV data ONLY for chatbot (if needed)
+        progress_bar.progress(90, text="Loading minimal data for chatbot...")
         df_enrol, df_bio, df_demo = load_data()
-        
-        # Initialize engines (40% progress)
-        progress_bar.progress(40, text="Initializing analytics engines...")
-        exec_engine = ExecutiveSummaryEngine(df_enrol, df_bio, df_demo)
-        adv_engine = AadhaarAnalyticsEngine(df_enrol, df_bio, df_demo)
-        
-        # Load all cached data (60-100% progress)
-        progress_bar.progress(60, text="Loading trends analytics and ML predictions from cache...")
-        preloaded_charts = preload_all_charts(df_enrol, df_bio, df_demo)
         
         progress_bar.progress(100, text="Complete!")
         progress_bar.empty()  # Remove progress bar
@@ -743,18 +821,14 @@ try:
         st.session_state.df_enrol = df_enrol
         st.session_state.df_bio = df_bio
         st.session_state.df_demo = df_demo
-        st.session_state.exec_engine = exec_engine
-        st.session_state.adv_engine = adv_engine
         st.session_state.preloaded_charts = preloaded_charts
         
-        st.toast(f"✅ Ready! {len(df_enrol):,} enrollments loaded", icon="🎉")
+        st.toast(f"✅ Ready! All analytics loaded from cache", icon="🎉")
     else:
         # Use cached data
         df_enrol = st.session_state.df_enrol
         df_bio = st.session_state.df_bio
         df_demo = st.session_state.df_demo
-        exec_engine = st.session_state.exec_engine
-        adv_engine = st.session_state.adv_engine
         preloaded_charts = st.session_state.preloaded_charts
 
 except Exception as e:
@@ -788,18 +862,17 @@ st.sidebar.info("System Status: **Online**")
 # --- PAGE 1: EXECUTIVE SUMMARY ---
 if page == "Executive Summary":
     st.title("Executive Command Center")
-    st.markdown("**High-level overview of ecosystem health and critical alerts**")
+    st.markdown("**High-level overview of ecosystem health and critical alerts** • _Data loaded from cache_")
     
     # ---------------------------------------------------------
     # SECTION 1: CRITICAL ALERTS (Metrics + Popups)
     # ---------------------------------------------------------
     st.subheader("Critical Alerts")
     
-    # Calculate Data
-    early_warning = exec_engine.get_early_warning_system()
-    stagnation = exec_engine.get_stagnation_detection()
-    age_cols = [col for col in df_enrol.columns if col.startswith('age_')]
-    total_vol = df_enrol[age_cols].sum().sum()
+    # Get Data from Cache
+    early_warning = preloaded_charts.get('early_warning', {'metric_value': 0, 'details_df': pd.DataFrame()})
+    stagnation = preloaded_charts.get('stagnation', {'total_stagnant': 0, 'pincode_list': []})
+    total_vol = preloaded_charts.get('total_volume', 0)
     
     # Display Big Metrics
     col1, col2, col3 = st.columns(3)
@@ -822,9 +895,12 @@ if page == "Executive Summary":
             st.markdown("### Full List of Critical Districts")
             st.write("Districts with >20% drop in enrollment volume.")
             # Display as static table (top 10 rows)
-            display_df = early_warning['details_df'][['change_pct']].head(10).copy()
-            display_df['change_pct'] = display_df['change_pct'].apply(lambda x: f"{x:.1f}%")
-            st.table(display_df)
+            if not early_warning['details_df'].empty:
+                display_df = early_warning['details_df'][['change_pct']].head(10).copy()
+                display_df['change_pct'] = display_df['change_pct'].apply(lambda x: f"{x:.1f}%")
+                st.table(display_df)
+            else:
+                st.info("No critical decline districts found.")
 
     with col2:
         st.metric("Stagnant Pincodes (30 Days)", stagnation['total_stagnant'], delta_color="inverse")
@@ -850,15 +926,21 @@ if page == "Executive Summary":
     # SECTION 2: LEADERBOARDS (Keeping the Top 5 Tables)
     # ---------------------------------------------------------
     st.subheader("Performance Leaderboard")
-    benchmarks = exec_engine.get_peer_benchmarking()
+    benchmarks = preloaded_charts.get('benchmarks', {'top_performers': pd.DataFrame(), 'bottom_performers': pd.DataFrame()})
     
     c1, c2 = st.columns(2)
     with c1:
         st.markdown("### Top 5 Performing Districts")
-        st.dataframe(benchmarks['top_performers'], hide_index=True, use_container_width=True)
+        if not benchmarks['top_performers'].empty:
+            st.dataframe(benchmarks['top_performers'], hide_index=True, use_container_width=True)
+        else:
+            st.info("No benchmark data available.")
     with c2:
         st.markdown("### Bottom 5 Districts (Needs Support)")
-        st.dataframe(benchmarks['bottom_performers'], hide_index=True, use_container_width=True)
+        if not benchmarks['bottom_performers'].empty:
+            st.dataframe(benchmarks['bottom_performers'], hide_index=True, use_container_width=True)
+        else:
+            st.info("No benchmark data available.")
 
     # ---------------------------------------------------------
     # SECTION 3: MAP (Your India Map)
@@ -866,7 +948,7 @@ if page == "Executive Summary":
     st.markdown("---")
     st.subheader("Location Archetypes (Cluster Map)")
     
-    clusters = exec_engine.get_location_clusters()
+    clusters = preloaded_charts.get('clusters', pd.DataFrame())
     
     if not clusters.empty:
         # Load District GeoJSON
@@ -896,7 +978,7 @@ if page == "Executive Summary":
         
         st.plotly_chart(fig_cluster_map, use_container_width=True)
     else:
-        st.warning("Not enough data to generate clusters.")
+        st.warning("Not enough data to generate clusters. Run `python generate_executive_cache.py` to generate cache.")
 
 # --- PAGE 2: OPERATIONS ---
 elif page == "Operations & Logistics":

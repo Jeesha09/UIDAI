@@ -1,0 +1,6409 @@
+{
+  "early_warning": {
+    "metric_value": 238,
+    "details_df": [
+      {
+        "district": "South Garo Hills",
+        "recent": 0.0,
+        "previous": 1.0,
+        "change_pct": -100.0,
+        "status": "Critical Decline"
+      },
+      {
+        "district": "West Khasi Hills",
+        "recent": 0.0,
+        "previous": 15.0,
+        "change_pct": -100.0,
+        "status": "Critical Decline"
+      },
+      {
+        "district": "Samstipur",
+        "recent": 0.0,
+        "previous": 2.0,
+        "change_pct": -100.0,
+        "status": "Critical Decline"
+      },
+      {
+        "district": "Tamulpur District",
+        "recent": 0.0,
+        "previous": 4.0,
+        "change_pct": -100.0,
+        "status": "Critical Decline"
+      },
+      {
+        "district": "Dima Hasao",
+        "recent": 0.0,
+        "previous": 1.0,
+        "change_pct": -100.0,
+        "status": "Critical Decline"
+      },
+      {
+        "district": "Mokokchung",
+        "recent": 0.0,
+        "previous": 2.0,
+        "change_pct": -100.0,
+        "status": "Critical Decline"
+      },
+      {
+        "district": "East Garo Hills",
+        "recent": 0.0,
+        "previous": 3.0,
+        "change_pct": -100.0,
+        "status": "Critical Decline"
+      },
+      {
+        "district": "Panch Mahals",
+        "recent": 1.0,
+        "previous": 7.0,
+        "change_pct": -85.71428571428571,
+        "status": "Critical Decline"
+      },
+      {
+        "district": "Bengaluru South",
+        "recent": 1.0,
+        "previous": 5.0,
+        "change_pct": -80.0,
+        "status": "Critical Decline"
+      },
+      {
+        "district": "West Jaintia Hills",
+        "recent": 4.0,
+        "previous": 19.0,
+        "change_pct": -78.94736842105263,
+        "status": "Critical Decline"
+      }
+    ]
+  },
+  "stagnation": {
+    "total_stagnant": 613,
+    "pincode_list": [
+      "121014",
+      "122010",
+      "132106",
+      "133006",
+      "140407",
+      "142023",
+      "142028",
+      "143005",
+      "143026",
+      "144011",
+      "144028",
+      "144037",
+      "144043",
+      "144104",
+      "144303",
+      "144404",
+      "144407",
+      "144520",
+      "146106",
+      "146107",
+      "146115",
+      "148017",
+      "151004",
+      "160001",
+      "160017",
+      "171002",
+      "171004",
+      "171215",
+      "171223",
+      "171303",
+      "172103",
+      "172106",
+      "172117",
+      "172118",
+      "173202",
+      "173216",
+      "173219",
+      "173222",
+      "174005",
+      "174036",
+      "174302",
+      "174405",
+      "174505",
+      "175012",
+      "175014",
+      "175016",
+      "175051",
+      "175122",
+      "175133",
+      "175137",
+      "175138",
+      "175140",
+      "176062",
+      "176073",
+      "176089",
+      "176095",
+      "176123",
+      "176126",
+      "176213",
+      "176305",
+      "177005",
+      "177031",
+      "177107",
+      "180012",
+      "181124",
+      "182104",
+      "190024",
+      "192233",
+      "193108",
+      "194404",
+      "201004",
+      "201020",
+      "201103",
+      "201312",
+      "201314",
+      "201315",
+      "203206",
+      "203391",
+      "203398",
+      "203401",
+      "203403",
+      "203407",
+      "203409",
+      "209201",
+      "210010",
+      "211009",
+      "211014",
+      "211015",
+      "211018",
+      "212210",
+      "212212",
+      "212621",
+      "221012",
+      "221111",
+      "222003",
+      "222103",
+      "222110",
+      "224232",
+      "224238",
+      "226202"
+    ]
+  },
+  "benchmarks": {
+    "top_performers": [
+      {
+        "state": "Karnataka",
+        "district": "Bengaluru",
+        "total_performance": 38328,
+        "rank": 1.0
+      },
+      {
+        "state": "West Bengal",
+        "district": "Murshidabad",
+        "total_performance": 31442,
+        "rank": 2.0
+      },
+      {
+        "state": "Maharashtra",
+        "district": "Thane",
+        "total_performance": 29092,
+        "rank": 3.0
+      },
+      {
+        "state": "West Bengal",
+        "district": "South 24 Parganas",
+        "total_performance": 28384,
+        "rank": 4.0
+      },
+      {
+        "state": "West Bengal",
+        "district": "North 24 Parganas",
+        "total_performance": 25920,
+        "rank": 5.0
+      }
+    ],
+    "bottom_performers": [
+      {
+        "state": "Uttar Pradesh",
+        "district": "Raebareli",
+        "total_performance": 0,
+        "rank": 877.5
+      },
+      {
+        "state": "Sikkim",
+        "district": "Mangan",
+        "total_performance": 0,
+        "rank": 877.5
+      },
+      {
+        "state": "Uttar Pradesh",
+        "district": "Bagpat",
+        "total_performance": 0,
+        "rank": 877.5
+      },
+      {
+        "state": "Arunachal Pradesh",
+        "district": "Leparada",
+        "total_performance": 0,
+        "rank": 877.5
+      },
+      {
+        "state": "Rajasthan",
+        "district": "Salumbar",
+        "total_performance": 1,
+        "rank": 872.0
+      }
+    ]
+  },
+  "clusters": [
+    {
+      "state": "Andaman And Nicobar Islands",
+      "district": "Andamans",
+      "total_volume": 70,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andaman And Nicobar Islands",
+      "district": "Nicobar",
+      "total_volume": 65,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andaman And Nicobar Islands",
+      "district": "North And Middle Andaman",
+      "total_volume": 128,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andaman And Nicobar Islands",
+      "district": "South Andaman",
+      "total_volume": 216,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Adilabad",
+      "total_volume": 1138,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Alluri Sitharama Raju",
+      "total_volume": 1139,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Anakapalli",
+      "total_volume": 531,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Anantapur",
+      "total_volume": 8960,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Annamayya",
+      "total_volume": 973,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Bapatla",
+      "total_volume": 437,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Chittoor",
+      "total_volume": 7540,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Cuddapah",
+      "total_volume": 5521,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Dr B R Ambedkar Konaseema",
+      "total_volume": 635,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "East Godavari",
+      "total_volume": 7171,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Eluru",
+      "total_volume": 584,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Guntur",
+      "total_volume": 8804,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Hyderabad",
+      "total_volume": 3832,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Kakinada",
+      "total_volume": 885,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Karimnagar",
+      "total_volume": 623,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Khammam",
+      "total_volume": 869,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Krishna",
+      "total_volume": 6197,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Kurnool",
+      "total_volume": 10947,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Kv Rangareddy",
+      "total_volume": 15,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Kvrangareddy",
+      "total_volume": 55,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Mahabubnagar",
+      "total_volume": 1086,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Mahbubnagar",
+      "total_volume": 511,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Medak",
+      "total_volume": 1177,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "N T R",
+      "total_volume": 836,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Nalgonda",
+      "total_volume": 951,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Nandyal",
+      "total_volume": 866,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Nellore",
+      "total_volume": 6083,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Nizamabad",
+      "total_volume": 453,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Palnadu",
+      "total_volume": 784,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Parvathipuram Manyam",
+      "total_volume": 472,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Prakasam",
+      "total_volume": 6466,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Rangareddy",
+      "total_volume": 1479,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Sri Potti Sriramulu Nellore",
+      "total_volume": 992,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Sri Sathya Sai",
+      "total_volume": 898,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Srikakulam",
+      "total_volume": 4165,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Tirupati",
+      "total_volume": 1030,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Visakhapatnam",
+      "total_volume": 7916,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Vizianagaram",
+      "total_volume": 3698,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Warangal",
+      "total_volume": 858,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "West Godavari",
+      "total_volume": 5592,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Andhra Pradesh",
+      "district": "Y S R",
+      "total_volume": 771,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Anjaw",
+      "total_volume": 26,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Changlang",
+      "total_volume": 499,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Dibang Valley",
+      "total_volume": 7,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "East Kameng",
+      "total_volume": 102,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "East Siang",
+      "total_volume": 82,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Kamle",
+      "total_volume": 5,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Kra Daadi",
+      "total_volume": 22,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Kurung Kumey",
+      "total_volume": 31,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Leparada",
+      "total_volume": 1,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Lohit",
+      "total_volume": 103,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Longding",
+      "total_volume": 178,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Lower Dibang Valley",
+      "total_volume": 60,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Lower Siang",
+      "total_volume": 13,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Lower Subansiri",
+      "total_volume": 50,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Namsai",
+      "total_volume": 96,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Pakke Kessang",
+      "total_volume": 3,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Papum Pare",
+      "total_volume": 206,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Shi Yomi",
+      "total_volume": 13,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Siang",
+      "total_volume": 43,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Tawang",
+      "total_volume": 111,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Tirap",
+      "total_volume": 60,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Upper Siang",
+      "total_volume": 22,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "Upper Subansiri",
+      "total_volume": 88,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "West Kameng",
+      "total_volume": 175,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Arunachal Pradesh",
+      "district": "West Siang",
+      "total_volume": 112,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Bajali",
+      "total_volume": 21,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Baksa",
+      "total_volume": 2520,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Barpeta",
+      "total_volume": 11077,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Biswanath",
+      "total_volume": 865,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Bongaigaon",
+      "total_volume": 2549,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Cachar",
+      "total_volume": 13001,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Assam",
+      "district": "Charaideo",
+      "total_volume": 853,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Chirang",
+      "total_volume": 2277,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Darrang",
+      "total_volume": 5681,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Dhemaji",
+      "total_volume": 5055,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Dhubri",
+      "total_volume": 8797,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Dibrugarh",
+      "total_volume": 5387,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Dima Hasao",
+      "total_volume": 147,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Goalpara",
+      "total_volume": 7678,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Golaghat",
+      "total_volume": 7458,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Hailakandi",
+      "total_volume": 4137,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Hojai",
+      "total_volume": 5443,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Jorhat",
+      "total_volume": 3765,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Kamrup",
+      "total_volume": 10296,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Kamrup Metro",
+      "total_volume": 3991,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Assam",
+      "district": "Karbi Anglong",
+      "total_volume": 4000,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Karimganj",
+      "total_volume": 9930,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Kokrajhar",
+      "total_volume": 3037,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Lakhimpur",
+      "total_volume": 5374,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Majuli",
+      "total_volume": 358,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Marigaon",
+      "total_volume": 7559,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Nagaon",
+      "total_volume": 9395,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Nalbari",
+      "total_volume": 2904,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "North Cachar Hills",
+      "total_volume": 638,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Sibsagar",
+      "total_volume": 2223,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Sivasagar",
+      "total_volume": 309,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Assam",
+      "district": "Sonitpur",
+      "total_volume": 6474,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "South Salmara Mankachar",
+      "total_volume": 1108,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Sribhumi",
+      "total_volume": 126,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Tamulpur District",
+      "total_volume": 22,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "Tinsukia",
+      "total_volume": 5517,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Assam",
+      "district": "Udalguri",
+      "total_volume": 3243,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Assam",
+      "district": "West Karbi Anglong",
+      "total_volume": 897,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Bihar",
+      "district": "Araria",
+      "total_volume": 10064,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Arwal",
+      "total_volume": 846,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Banka",
+      "total_volume": 6277,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Begusarai",
+      "total_volume": 8164,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Bhabua",
+      "total_volume": 14,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Bhagalpur",
+      "total_volume": 10833,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Bhojpur",
+      "total_volume": 3242,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Buxar",
+      "total_volume": 2592,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Chhatrapati Sambhajinagar",
+      "total_volume": 3123,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Darbhanga",
+      "total_volume": 10088,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "East Champaran",
+      "total_volume": 15813,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Bihar",
+      "district": "Gaya",
+      "total_volume": 7157,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Gopalganj",
+      "total_volume": 5499,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Jamui",
+      "total_volume": 5353,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Jehanabad",
+      "total_volume": 1056,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Kaimur",
+      "total_volume": 3118,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Katihar",
+      "total_volume": 11447,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Bihar",
+      "district": "Khagaria",
+      "total_volume": 4417,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Kishanganj",
+      "total_volume": 6982,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Lakhisarai",
+      "total_volume": 2732,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Madhepura",
+      "total_volume": 4610,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Madhubani",
+      "total_volume": 13396,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Bihar",
+      "district": "Monghyr",
+      "total_volume": 29,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Munger",
+      "total_volume": 2553,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Muzaffarpur",
+      "total_volume": 14752,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Bihar",
+      "district": "Nalanda",
+      "total_volume": 3812,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Nawada",
+      "total_volume": 3033,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Pashchim Champaran",
+      "total_volume": 5622,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Patna",
+      "total_volume": 7493,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Purnea",
+      "total_volume": 169,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Purnia",
+      "total_volume": 12379,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Bihar",
+      "district": "Rohtas",
+      "total_volume": 2819,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Saharsa",
+      "total_volume": 6486,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Samastipur",
+      "total_volume": 11420,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Bihar",
+      "district": "Samstipur",
+      "total_volume": 41,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Saran",
+      "total_volume": 7811,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Sheikhpura",
+      "total_volume": 1276,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Sheohar",
+      "total_volume": 2078,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Bihar",
+      "district": "Sitamarhi",
+      "total_volume": 23376,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Bihar",
+      "district": "Siwan",
+      "total_volume": 6286,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Supaul",
+      "total_volume": 5848,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "Vaishali",
+      "total_volume": 8309,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Bihar",
+      "district": "West Champaran",
+      "total_volume": 12368,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Chandigarh",
+      "district": "Chandigarh",
+      "total_volume": 2509,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chandigarh",
+      "district": "Rupnagar",
+      "total_volume": 3,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Balod",
+      "total_volume": 1607,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Baloda Bazar",
+      "total_volume": 4382,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Balrampur",
+      "total_volume": 4662,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Bastar",
+      "total_volume": 4800,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Bemetara",
+      "total_volume": 2469,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Bijapur",
+      "total_volume": 4963,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Bilaspur",
+      "total_volume": 7509,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Dakshin Bastar Dantewada",
+      "total_volume": 1052,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Dantewada",
+      "total_volume": 584,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Dhamtari",
+      "total_volume": 1879,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Durg",
+      "total_volume": 3575,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Gariyaband",
+      "total_volume": 1313,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Gaurela Pendra Marwahi",
+      "total_volume": 813,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Janjgir Champa",
+      "total_volume": 4120,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Jashpur",
+      "total_volume": 1668,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Kabeerdham",
+      "total_volume": 863,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Kanker",
+      "total_volume": 1428,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Kawardha",
+      "total_volume": 1885,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Khairagarh Chhuikhadan Gandai",
+      "total_volume": 183,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Kondagaon",
+      "total_volume": 1984,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Korba",
+      "total_volume": 3053,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Koriya",
+      "total_volume": 1259,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Mahasamund",
+      "total_volume": 2798,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Manendragarh Chirmiri Bharatpur",
+      "total_volume": 188,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Mohalla Manpur Ambagarh Chowki",
+      "total_volume": 10,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Mohla Manpur Ambagarh Chouki",
+      "total_volume": 166,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Mungeli",
+      "total_volume": 2602,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Narayanpur",
+      "total_volume": 456,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Raigarh",
+      "total_volume": 4331,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Raipur",
+      "total_volume": 6262,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Rajnandgaon",
+      "total_volume": 3814,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Sakti",
+      "total_volume": 375,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Sarangarh Bilaigarh",
+      "total_volume": 162,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Sukma",
+      "total_volume": 1375,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Surajpur",
+      "total_volume": 2257,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Surguja",
+      "total_volume": 2877,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Chhattisgarh",
+      "district": "Uttar Bastar Kanker",
+      "total_volume": 726,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Dadra And Nagar Haveli And Daman And Diu",
+      "district": "Dadra And Nagar Haveli",
+      "total_volume": 1348,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Dadra And Nagar Haveli And Daman And Diu",
+      "district": "Daman",
+      "total_volume": 113,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Dadra And Nagar Haveli And Daman And Diu",
+      "district": "Diu",
+      "total_volume": 88,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Delhi",
+      "district": "Central Delhi",
+      "total_volume": 2954,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Delhi",
+      "district": "East Delhi",
+      "total_volume": 8278,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Delhi",
+      "district": "Najafgarh",
+      "total_volume": 21,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Delhi",
+      "district": "New Delhi",
+      "total_volume": 1135,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Delhi",
+      "district": "North Delhi",
+      "total_volume": 3229,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Delhi",
+      "district": "North East",
+      "total_volume": 1332,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Delhi",
+      "district": "North East Delhi",
+      "total_volume": 8364,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Delhi",
+      "district": "North West Delhi",
+      "total_volume": 12750,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Delhi",
+      "district": "Shahdara",
+      "total_volume": 1185,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Delhi",
+      "district": "South Delhi",
+      "total_volume": 10615,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Delhi",
+      "district": "South East Delhi",
+      "total_volume": 51,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Delhi",
+      "district": "South West Delhi",
+      "total_volume": 7310,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Delhi",
+      "district": "West Delhi",
+      "total_volume": 15009,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Goa",
+      "district": "Bardez",
+      "total_volume": 2,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Goa",
+      "district": "North Goa",
+      "total_volume": 1208,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Goa",
+      "district": "South Goa",
+      "total_volume": 869,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Ahmadabad",
+      "total_volume": 4345,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Ahmedabad",
+      "total_volume": 13451,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Gujarat",
+      "district": "Amreli",
+      "total_volume": 3706,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Anand",
+      "total_volume": 6152,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Arvalli",
+      "total_volume": 2069,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Banaskantha",
+      "total_volume": 18358,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Gujarat",
+      "district": "Bharuch",
+      "total_volume": 3843,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Bhavnagar",
+      "total_volume": 8865,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Botad",
+      "total_volume": 2473,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Chhotaudepur",
+      "total_volume": 2804,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Dahod",
+      "total_volume": 6618,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Dang",
+      "total_volume": 693,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Devbhumi Dwarka",
+      "total_volume": 2068,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Dohad",
+      "total_volume": 5673,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Gandhinagar",
+      "total_volume": 4813,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Gir Somnath",
+      "total_volume": 4748,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Jamnagar",
+      "total_volume": 5279,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Junagadh",
+      "total_volume": 4968,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Kachchh",
+      "total_volume": 6697,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Kheda",
+      "total_volume": 6343,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Mahesana",
+      "total_volume": 5582,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Mahisagar",
+      "total_volume": 2166,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Morbi",
+      "total_volume": 6201,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Narmada",
+      "total_volume": 1184,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Navsari",
+      "total_volume": 2556,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Panch Mahals",
+      "total_volume": 958,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Panchmahals",
+      "total_volume": 5157,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Patan",
+      "total_volume": 6739,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Porbandar",
+      "total_volume": 2187,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Rajkot",
+      "total_volume": 13338,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Gujarat",
+      "district": "Sabarkantha",
+      "total_volume": 5182,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Surat",
+      "total_volume": 19070,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Gujarat",
+      "district": "Surendra Nagar",
+      "total_volume": 5190,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Surendranagar",
+      "total_volume": 849,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Tapi",
+      "total_volume": 2007,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "The Dangs",
+      "total_volume": 1142,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Gujarat",
+      "district": "Vadodara",
+      "total_volume": 9851,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Gujarat",
+      "district": "Valsad",
+      "total_volume": 6042,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Haryana",
+      "district": "Ambala",
+      "total_volume": 3096,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Bhiwani",
+      "total_volume": 3337,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Charkhi Dadri",
+      "total_volume": 839,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Faridabad",
+      "total_volume": 12930,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Haryana",
+      "district": "Fatehabad",
+      "total_volume": 2520,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Gurugram",
+      "total_volume": 7625,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Haryana",
+      "district": "Hisar",
+      "total_volume": 4945,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Haryana",
+      "district": "Jhajjar",
+      "total_volume": 2525,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Jind",
+      "total_volume": 3729,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Kaithal",
+      "total_volume": 2906,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Karnal",
+      "total_volume": 3869,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Kurukshetra",
+      "total_volume": 2326,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Mahendragarh",
+      "total_volume": 2599,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Nuh",
+      "total_volume": 8301,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Haryana",
+      "district": "Palwal",
+      "total_volume": 4371,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Haryana",
+      "district": "Panchkula",
+      "total_volume": 1292,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Panipat",
+      "total_volume": 5545,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Haryana",
+      "district": "Rewari",
+      "total_volume": 2335,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Rohtak",
+      "total_volume": 3222,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Sirsa",
+      "total_volume": 3137,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Haryana",
+      "district": "Sonipat",
+      "total_volume": 4351,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Haryana",
+      "district": "Yamunanagar",
+      "total_volume": 3342,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Bilaspur",
+      "total_volume": 985,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Chamba",
+      "total_volume": 1593,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Hamirpur",
+      "total_volume": 1182,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Kangra",
+      "total_volume": 3891,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Kinnaur",
+      "total_volume": 142,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Kullu",
+      "total_volume": 1128,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Lahaul And Spiti",
+      "total_volume": 3,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Lahul And Spiti",
+      "total_volume": 67,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Mandi",
+      "total_volume": 2471,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Shimla",
+      "total_volume": 1509,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Sirmaur",
+      "total_volume": 1517,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Solan",
+      "total_volume": 1111,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Himachal Pradesh",
+      "district": "Una",
+      "total_volume": 1226,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Anantnag",
+      "total_volume": 3013,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Badgam",
+      "total_volume": 1675,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Bandipore",
+      "total_volume": 1331,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Bandipur",
+      "total_volume": 2,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Baramula",
+      "total_volume": 3262,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Budgam",
+      "total_volume": 808,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Doda",
+      "total_volume": 3481,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Ganderbal",
+      "total_volume": 784,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Jammu",
+      "total_volume": 3785,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Kargil",
+      "total_volume": 389,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Kathua",
+      "total_volume": 2652,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Kishtwar",
+      "total_volume": 1064,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Kulgam",
+      "total_volume": 979,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Kupwara",
+      "total_volume": 2440,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Leh",
+      "total_volume": 167,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Pulwama",
+      "total_volume": 1757,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Punch",
+      "total_volume": 2082,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Rajauri",
+      "total_volume": 1,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Rajouri",
+      "total_volume": 2080,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Ramban",
+      "total_volume": 1323,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Reasi",
+      "total_volume": 1145,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Samba",
+      "total_volume": 541,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Shopian",
+      "total_volume": 328,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Shupiyan",
+      "total_volume": 538,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Srinagar",
+      "total_volume": 2988,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jammu And Kashmir",
+      "district": "Udhampur",
+      "total_volume": 2459,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Bokaro",
+      "total_volume": 3524,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Chatra",
+      "total_volume": 3483,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Deoghar",
+      "total_volume": 4645,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Dhanbad",
+      "total_volume": 6970,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Dumka",
+      "total_volume": 2829,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "East Singhbhum",
+      "total_volume": 6983,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Garhwa",
+      "total_volume": 4852,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Giridih",
+      "total_volume": 7777,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Godda",
+      "total_volume": 3255,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Gumla",
+      "total_volume": 4177,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Hazaribagh",
+      "total_volume": 4514,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Jamtara",
+      "total_volume": 3176,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Khunti",
+      "total_volume": 1471,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Kodarma",
+      "total_volume": 184,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Koderma",
+      "total_volume": 2108,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Latehar",
+      "total_volume": 1686,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Lohardaga",
+      "total_volume": 2040,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Pakaur",
+      "total_volume": 197,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Pakur",
+      "total_volume": 4016,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Palamau",
+      "total_volume": 220,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Palamu",
+      "total_volume": 6612,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Pashchimi Singhbhum",
+      "total_volume": 347,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Purbi Singhbhum",
+      "total_volume": 814,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Ramgarh",
+      "total_volume": 1913,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Ranchi",
+      "total_volume": 9652,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Sahebganj",
+      "total_volume": 3651,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Sahibganj",
+      "total_volume": 187,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Seraikela Kharsawan",
+      "total_volume": 2973,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "Simdega",
+      "total_volume": 1485,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Jharkhand",
+      "district": "West Singhbhum",
+      "total_volume": 4259,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Bagalkot",
+      "total_volume": 6460,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Ballari",
+      "total_volume": 2514,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Belagavi",
+      "total_volume": 7183,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Belgaum",
+      "total_volume": 5863,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Bellary",
+      "total_volume": 3624,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Bengaluru",
+      "total_volume": 45935,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Karnataka",
+      "district": "Bengaluru Rural",
+      "total_volume": 4437,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Bengaluru South",
+      "total_volume": 20,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Bidar",
+      "total_volume": 4024,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Bijapur",
+      "total_volume": 3304,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Chamarajanagar",
+      "total_volume": 255,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Chamrajanagar",
+      "total_volume": 2011,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Chamrajnagar",
+      "total_volume": 356,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Chickmagalur",
+      "total_volume": 1129,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Chikkaballapur",
+      "total_volume": 2856,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Chikkamagaluru",
+      "total_volume": 1056,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Chikmagalur",
+      "total_volume": 145,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Chitradurga",
+      "total_volume": 4087,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Dakshina Kannada",
+      "total_volume": 5975,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Davangere",
+      "total_volume": 4898,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Dharwad",
+      "total_volume": 4752,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Gadag",
+      "total_volume": 4243,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Gulbarga",
+      "total_volume": 3653,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Hasan",
+      "total_volume": 944,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Hassan",
+      "total_volume": 2352,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Haveri",
+      "total_volume": 4087,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Kalaburagi",
+      "total_volume": 4180,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Kodagu",
+      "total_volume": 1136,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Kolar",
+      "total_volume": 3872,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Koppal",
+      "total_volume": 4801,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Mandya",
+      "total_volume": 3444,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Mysuru",
+      "total_volume": 6757,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Raichur",
+      "total_volume": 7723,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Ramanagar",
+      "total_volume": 2570,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Ramanagara",
+      "total_volume": 180,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Shivamogga",
+      "total_volume": 4158,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Tumakuru",
+      "total_volume": 5593,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Udupi",
+      "total_volume": 3383,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Uttara Kannada",
+      "total_volume": 3249,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Vijayanagara",
+      "total_volume": 1878,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Karnataka",
+      "district": "Vijayapura",
+      "total_volume": 4754,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Karnataka",
+      "district": "Yadgir",
+      "total_volume": 5531,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Kerala",
+      "district": "Alappuzha",
+      "total_volume": 2667,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Kerala",
+      "district": "Ernakulam",
+      "total_volume": 4517,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Kerala",
+      "district": "Idukki",
+      "total_volume": 1427,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Kerala",
+      "district": "Kannur",
+      "total_volume": 4243,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Kerala",
+      "district": "Kasaragod",
+      "total_volume": 3008,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Kerala",
+      "district": "Kollam",
+      "total_volume": 4027,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Kerala",
+      "district": "Kottayam",
+      "total_volume": 2517,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Kerala",
+      "district": "Kozhikode",
+      "total_volume": 4790,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Kerala",
+      "district": "Malappuram",
+      "total_volume": 10451,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Kerala",
+      "district": "Palakkad",
+      "total_volume": 5343,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Kerala",
+      "district": "Pathanamthitta",
+      "total_volume": 1471,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Kerala",
+      "district": "Thiruvananthapuram",
+      "total_volume": 5269,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Kerala",
+      "district": "Thrissur",
+      "total_volume": 5399,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Kerala",
+      "district": "Wayanad",
+      "total_volume": 1283,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Ladakh",
+      "district": "Kargil",
+      "total_volume": 372,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Ladakh",
+      "district": "Leh",
+      "total_volume": 112,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Lakshadweep",
+      "district": "Lakshadweep",
+      "total_volume": 193,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Agar Malwa",
+      "total_volume": 2116,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Alirajpur",
+      "total_volume": 3620,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Anuppur",
+      "total_volume": 2877,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Ashoknagar",
+      "total_volume": 5581,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Balaghat",
+      "total_volume": 6265,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Barwani",
+      "total_volume": 13468,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Betul",
+      "total_volume": 6959,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Bhind",
+      "total_volume": 9122,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Bhopal",
+      "total_volume": 11410,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Burhanpur",
+      "total_volume": 6930,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Chhatarpur",
+      "total_volume": 11871,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Chhindwara",
+      "total_volume": 8356,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Damoh",
+      "total_volume": 5128,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Datia",
+      "total_volume": 4038,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Dewas",
+      "total_volume": 8484,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Dhar",
+      "total_volume": 9159,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Dindori",
+      "total_volume": 2410,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "East Nimar",
+      "total_volume": 2359,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Guna",
+      "total_volume": 7562,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Gwalior",
+      "total_volume": 12940,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Harda",
+      "total_volume": 2254,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Indore",
+      "total_volume": 17294,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Jabalpur",
+      "total_volume": 10754,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Jhabua",
+      "total_volume": 6918,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Katni",
+      "total_volume": 8531,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Khandwa",
+      "total_volume": 3289,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Khargone",
+      "total_volume": 10376,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Maihar",
+      "total_volume": 398,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Mandla",
+      "total_volume": 4650,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Mandsaur",
+      "total_volume": 7468,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Mauganj",
+      "total_volume": 380,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Morena",
+      "total_volume": 14734,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Narmadapuram",
+      "total_volume": 5807,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Narsimhapur",
+      "total_volume": 966,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Narsinghpur",
+      "total_volume": 3952,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Neemuch",
+      "total_volume": 4200,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Niwari",
+      "total_volume": 126,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Pandhurna",
+      "total_volume": 94,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Panna",
+      "total_volume": 6935,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Raisen",
+      "total_volume": 6337,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Rajgarh",
+      "total_volume": 6577,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Ratlam",
+      "total_volume": 6504,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Rewa",
+      "total_volume": 9375,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Sagar",
+      "total_volume": 11959,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Satna",
+      "total_volume": 11330,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Sehore",
+      "total_volume": 5210,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Seoni",
+      "total_volume": 5568,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Shahdol",
+      "total_volume": 4469,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Shajapur",
+      "total_volume": 5955,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Sheopur",
+      "total_volume": 3904,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Shivpuri",
+      "total_volume": 7874,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Sidhi",
+      "total_volume": 5621,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Singrauli",
+      "total_volume": 5691,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Tikamgarh",
+      "total_volume": 5703,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Ujjain",
+      "total_volume": 12545,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Umaria",
+      "total_volume": 4394,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "Vidisha",
+      "total_volume": 8168,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Madhya Pradesh",
+      "district": "West Nimar",
+      "total_volume": 624,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Ahilyanagar",
+      "total_volume": 9997,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Akola",
+      "total_volume": 4015,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Amravati",
+      "total_volume": 5890,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Beed",
+      "total_volume": 8163,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Bhandara",
+      "total_volume": 1848,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Buldhana",
+      "total_volume": 6954,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Chandrapur",
+      "total_volume": 4100,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Chhatrapati Sambhajinagar",
+      "total_volume": 13294,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Dharashiv",
+      "total_volume": 3429,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Dhule",
+      "total_volume": 7763,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Gadchiroli",
+      "total_volume": 2106,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Gondia",
+      "total_volume": 25,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Gondiya",
+      "total_volume": 2839,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Hingoli",
+      "total_volume": 6733,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Jalgaon",
+      "total_volume": 10681,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Jalna",
+      "total_volume": 4646,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Kolhapur",
+      "total_volume": 6495,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Latur",
+      "total_volume": 5976,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Mumbai",
+      "total_volume": 11011,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Mumbai City",
+      "total_volume": 2480,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Mumbai Suburban",
+      "total_volume": 13270,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Nagpur",
+      "total_volume": 10326,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Nanded",
+      "total_volume": 9500,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Nandurbar",
+      "total_volume": 7993,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Nashik",
+      "total_volume": 16566,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Palghar",
+      "total_volume": 7508,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Parbhani",
+      "total_volume": 5261,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Pune",
+      "total_volume": 25227,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Raigad",
+      "total_volume": 2690,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Raigarh",
+      "total_volume": 4487,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Ratnagiri",
+      "total_volume": 2384,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Sangli",
+      "total_volume": 5830,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Satara",
+      "total_volume": 5304,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Sindhudurg",
+      "total_volume": 1143,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Solapur",
+      "total_volume": 9797,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Thane",
+      "total_volume": 30059,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Wardha",
+      "total_volume": 1864,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Washim",
+      "total_volume": 3114,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Maharashtra",
+      "district": "Yavatmal",
+      "total_volume": 6255,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Manipur",
+      "district": "Bishnupur",
+      "total_volume": 558,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Chandel",
+      "total_volume": 249,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Churachandpur",
+      "total_volume": 1364,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Imphal East",
+      "total_volume": 568,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Imphal West",
+      "total_volume": 677,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Jiribam",
+      "total_volume": 54,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Kakching",
+      "total_volume": 40,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Pherzawl",
+      "total_volume": 1,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Senapati",
+      "total_volume": 780,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Tamenglong",
+      "total_volume": 326,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Thoubal",
+      "total_volume": 429,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Manipur",
+      "district": "Ukhrul",
+      "total_volume": 357,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Meghalaya",
+      "district": "East Garo Hills",
+      "total_volume": 2686,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "East Jaintia Hills",
+      "total_volume": 2779,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "East Khasi Hills",
+      "total_volume": 14206,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "Eastern West Khasi Hills",
+      "total_volume": 592,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "Jaintia Hills",
+      "total_volume": 4,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Meghalaya",
+      "district": "Kamrup",
+      "total_volume": 72,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "North Garo Hills",
+      "total_volume": 1215,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "Ri Bhoi",
+      "total_volume": 4710,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "South Garo Hills",
+      "total_volume": 2014,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "South West Garo Hills",
+      "total_volume": 3300,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Meghalaya",
+      "district": "South West Khasi Hills",
+      "total_volume": 1903,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "West Garo Hills",
+      "total_volume": 9085,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "West Jaintia Hills",
+      "total_volume": 6180,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Meghalaya",
+      "district": "West Khasi Hills",
+      "total_volume": 7720,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Mizoram",
+      "district": "Aizawl",
+      "total_volume": 823,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Mizoram",
+      "district": "Champhai",
+      "total_volume": 896,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Mizoram",
+      "district": "Hnahthial",
+      "total_volume": 2,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Mizoram",
+      "district": "Khawzawl",
+      "total_volume": 29,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Mizoram",
+      "district": "Kolasib",
+      "total_volume": 224,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Mizoram",
+      "district": "Lawngtlai",
+      "total_volume": 1261,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Mizoram",
+      "district": "Lunglei",
+      "total_volume": 610,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Mizoram",
+      "district": "Mamit",
+      "total_volume": 144,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Mizoram",
+      "district": "Mammit",
+      "total_volume": 71,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Mizoram",
+      "district": "Saiha",
+      "total_volume": 476,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Mizoram",
+      "district": "Saitual",
+      "total_volume": 9,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Mizoram",
+      "district": "Serchhip",
+      "total_volume": 86,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Chumukedima",
+      "total_volume": 87,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Nagaland",
+      "district": "Dimapur",
+      "total_volume": 1394,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Kiphire",
+      "total_volume": 215,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Kohima",
+      "total_volume": 669,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Longleng",
+      "total_volume": 253,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Meluri",
+      "total_volume": 4,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Nagaland",
+      "district": "Mokokchung",
+      "total_volume": 175,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Mon",
+      "total_volume": 789,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Niuland",
+      "total_volume": 16,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Noklak",
+      "total_volume": 108,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Nagaland",
+      "district": "Peren",
+      "total_volume": 611,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Phek",
+      "total_volume": 348,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Shamator",
+      "total_volume": 26,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Nagaland",
+      "district": "Tseminyu",
+      "total_volume": 17,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Nagaland",
+      "district": "Tuensang",
+      "total_volume": 596,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Wokha",
+      "total_volume": 148,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Nagaland",
+      "district": "Zunheboto",
+      "total_volume": 178,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Angul",
+      "total_volume": 2598,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Anugul",
+      "total_volume": 171,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Balangir",
+      "total_volume": 4638,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Odisha",
+      "district": "Baleshwar",
+      "total_volume": 5848,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Odisha",
+      "district": "Bargarh",
+      "total_volume": 4414,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Odisha",
+      "district": "Baudh",
+      "total_volume": 142,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Bhadrak",
+      "total_volume": 3715,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Boudh",
+      "total_volume": 1179,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Cuttack",
+      "total_volume": 4320,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Odisha",
+      "district": "Debagarh",
+      "total_volume": 788,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Dhenkanal",
+      "total_volume": 2474,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Gajapati",
+      "total_volume": 1684,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Ganjam",
+      "total_volume": 7072,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Odisha",
+      "district": "Jagatsinghpur",
+      "total_volume": 3502,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Jajapur",
+      "total_volume": 2109,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Jajpur",
+      "total_volume": 2040,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Jharsuguda",
+      "total_volume": 1096,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Kalahandi",
+      "total_volume": 3425,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Kandhamal",
+      "total_volume": 2641,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Kendrapara",
+      "total_volume": 3259,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Kendujhar",
+      "total_volume": 4384,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Odisha",
+      "district": "Khordha",
+      "total_volume": 4689,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Odisha",
+      "district": "Koraput",
+      "total_volume": 3312,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Malkangiri",
+      "total_volume": 2377,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Mayurbhanj",
+      "total_volume": 6293,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Odisha",
+      "district": "Nabarangpur",
+      "total_volume": 4579,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Odisha",
+      "district": "Nayagarh",
+      "total_volume": 2183,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Nuapada",
+      "total_volume": 1705,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Puri",
+      "total_volume": 3157,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Rayagada",
+      "total_volume": 2519,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Sambalpur",
+      "total_volume": 2256,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Sonapur",
+      "total_volume": 1289,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Subarnapur",
+      "total_volume": 345,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Odisha",
+      "district": "Sundargarh",
+      "total_volume": 3967,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Puducherry",
+      "district": "Karaikal",
+      "total_volume": 529,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Puducherry",
+      "district": "Pondicherry",
+      "total_volume": 1018,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Puducherry",
+      "district": "Puducherry",
+      "total_volume": 1245,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Puducherry",
+      "district": "Yanam",
+      "total_volume": 30,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Amritsar",
+      "total_volume": 7880,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Punjab",
+      "district": "Barnala",
+      "total_volume": 934,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Bathinda",
+      "total_volume": 2406,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Faridkot",
+      "total_volume": 803,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Fatehgarh Sahib",
+      "total_volume": 904,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Fazilka",
+      "total_volume": 1640,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Firozpur",
+      "total_volume": 1614,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Gurdaspur",
+      "total_volume": 4562,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Punjab",
+      "district": "Hoshiarpur",
+      "total_volume": 3733,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Jalandhar",
+      "total_volume": 3386,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Kapurthala",
+      "total_volume": 3280,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Punjab",
+      "district": "Ludhiana",
+      "total_volume": 13041,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Punjab",
+      "district": "Malerkotla",
+      "total_volume": 719,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Mansa",
+      "total_volume": 1017,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Moga",
+      "total_volume": 1376,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Muktsar",
+      "total_volume": 306,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Nawanshahr",
+      "total_volume": 169,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Pathankot",
+      "total_volume": 1048,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Patiala",
+      "total_volume": 4381,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Punjab",
+      "district": "Rupnagar",
+      "total_volume": 1153,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Sangrur",
+      "total_volume": 2126,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Sas Nagar",
+      "total_volume": 3242,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Shaheed Bhagat Singh Nagar",
+      "total_volume": 845,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Sri Muktsar Sahib",
+      "total_volume": 1165,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Punjab",
+      "district": "Tarn Taran",
+      "total_volume": 2666,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Ajmer",
+      "total_volume": 9348,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Alwar",
+      "total_volume": 16069,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Balotra",
+      "total_volume": 1,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Banswara",
+      "total_volume": 4233,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Baran",
+      "total_volume": 4609,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Barmer",
+      "total_volume": 10618,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Beawar",
+      "total_volume": 1,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Bharatpur",
+      "total_volume": 10411,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Bhilwara",
+      "total_volume": 8048,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Bikaner",
+      "total_volume": 7663,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Bundi",
+      "total_volume": 3538,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Chittaurgarh",
+      "total_volume": 287,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Chittorgarh",
+      "total_volume": 3826,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Churu",
+      "total_volume": 8048,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Dausa",
+      "total_volume": 4326,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Deeg",
+      "total_volume": 26,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Dhaulpur",
+      "total_volume": 93,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Dholpur",
+      "total_volume": 5869,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Didwana Kuchaman",
+      "total_volume": 2,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Dungarpur",
+      "total_volume": 3922,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Ganganagar",
+      "total_volume": 4228,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Hanumangarh",
+      "total_volume": 3669,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Jaipur",
+      "total_volume": 22170,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Jaisalmer",
+      "total_volume": 1734,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Jalor",
+      "total_volume": 8116,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Jalore",
+      "total_volume": 311,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Jhalawar",
+      "total_volume": 5034,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Jhunjhunu",
+      "total_volume": 6045,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Jodhpur",
+      "total_volume": 15491,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Karauli",
+      "total_volume": 5966,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Kota",
+      "total_volume": 5649,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Nagaur",
+      "total_volume": 11826,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Pali",
+      "total_volume": 6418,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Pratapgarh",
+      "total_volume": 2661,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Rajsamand",
+      "total_volume": 3107,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Salumbar",
+      "total_volume": 1,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Sawai Madhopur",
+      "total_volume": 4661,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Sikar",
+      "total_volume": 8339,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Sirohi",
+      "total_volume": 5879,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Tonk",
+      "total_volume": 4259,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Rajasthan",
+      "district": "Udaipur",
+      "total_volume": 8833,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Sikkim",
+      "district": "East Sikkim",
+      "total_volume": 420,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Sikkim",
+      "district": "Mangan",
+      "total_volume": 1,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Sikkim",
+      "district": "Namchi",
+      "total_volume": 17,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "Sikkim",
+      "district": "North Sikkim",
+      "total_volume": 79,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Sikkim",
+      "district": "South Sikkim",
+      "total_volume": 301,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Sikkim",
+      "district": "West Sikkim",
+      "total_volume": 342,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Ariyalur",
+      "total_volume": 2007,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Chengalpattu",
+      "total_volume": 934,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Chennai",
+      "total_volume": 7884,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Coimbatore",
+      "total_volume": 7182,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Cuddalore",
+      "total_volume": 7537,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Dharmapuri",
+      "total_volume": 4888,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Dindigul",
+      "total_volume": 4690,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Erode",
+      "total_volume": 4972,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Kallakurichi",
+      "total_volume": 915,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Kanchipuram",
+      "total_volume": 9994,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Kanniyakumari",
+      "total_volume": 2140,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Kanyakumari",
+      "total_volume": 1913,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Karur",
+      "total_volume": 3365,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Krishnagiri",
+      "total_volume": 4165,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Madurai",
+      "total_volume": 8914,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Mayiladuthurai",
+      "total_volume": 438,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Nagapattinam",
+      "total_volume": 3315,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Namakkal",
+      "total_volume": 4266,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Perambalur",
+      "total_volume": 1898,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Pudukkottai",
+      "total_volume": 5375,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Ramanathapuram",
+      "total_volume": 3361,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Ranipet",
+      "total_volume": 98,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Salem",
+      "total_volume": 8641,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Sivaganga",
+      "total_volume": 3761,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tenkasi",
+      "total_volume": 1150,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "total_volume": 5901,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "The Nilgiris",
+      "total_volume": 1284,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Theni",
+      "total_volume": 2910,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Thiruvallur",
+      "total_volume": 471,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Thiruvarur",
+      "total_volume": 3349,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Thoothukkudi",
+      "total_volume": 4442,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tiruchirappalli",
+      "total_volume": 8401,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tirunelveli",
+      "total_volume": 8305,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tirupathur",
+      "total_volume": 4,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tirupattur",
+      "total_volume": 946,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tiruppur",
+      "total_volume": 5083,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tiruvallur",
+      "total_volume": 8770,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tiruvannamalai",
+      "total_volume": 6589,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tiruvarur",
+      "total_volume": 1,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Tuticorin",
+      "total_volume": 1,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Vellore",
+      "total_volume": 8324,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Villupuram",
+      "total_volume": 5857,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Viluppuram",
+      "total_volume": 4341,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Tamil Nadu",
+      "district": "Virudhunagar",
+      "total_volume": 4780,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Telangana",
+      "district": "Adilabad",
+      "total_volume": 2520,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Bhadradri Kothagudem",
+      "total_volume": 2529,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Hanamkonda",
+      "total_volume": 921,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Hyderabad",
+      "total_volume": 20390,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Telangana",
+      "district": "Jagitial",
+      "total_volume": 1497,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Jangaon",
+      "total_volume": 958,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Jayashankar Bhupalpally",
+      "total_volume": 674,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Jogulamba Gadwal",
+      "total_volume": 1545,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Kamareddy",
+      "total_volume": 1864,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Karimnagar",
+      "total_volume": 5122,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Telangana",
+      "district": "Khammam",
+      "total_volume": 2809,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Komaram Bheem",
+      "total_volume": 917,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Kv Rangareddy",
+      "total_volume": 13728,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Telangana",
+      "district": "Mahabubabad",
+      "total_volume": 1250,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Mahabubnagar",
+      "total_volume": 7705,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Telangana",
+      "district": "Mancherial",
+      "total_volume": 925,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Medak",
+      "total_volume": 6165,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Telangana",
+      "district": "Medchal Malkajgiri",
+      "total_volume": 4057,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Telangana",
+      "district": "Mulugu",
+      "total_volume": 704,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Nagarkurnool",
+      "total_volume": 1079,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Nalgonda",
+      "total_volume": 5415,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Telangana",
+      "district": "Narayanpet",
+      "total_volume": 1086,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Nirmal",
+      "total_volume": 1295,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Nizamabad",
+      "total_volume": 5994,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Telangana",
+      "district": "Peddapalli",
+      "total_volume": 516,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Rajanna Sircilla",
+      "total_volume": 837,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Rangareddy",
+      "total_volume": 430,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Sangareddy",
+      "total_volume": 2235,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Siddipet",
+      "total_volume": 1702,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Suryapet",
+      "total_volume": 1745,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Vikarabad",
+      "total_volume": 2087,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Wanaparthy",
+      "total_volume": 1266,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Warangal",
+      "total_volume": 2468,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Warangal Rural",
+      "total_volume": 662,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Warangal Urban",
+      "total_volume": 591,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Telangana",
+      "district": "Yadadri",
+      "total_volume": 1381,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tripura",
+      "district": "Dhalai",
+      "total_volume": 841,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tripura",
+      "district": "Gomati",
+      "total_volume": 475,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tripura",
+      "district": "Khowai",
+      "total_volume": 240,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tripura",
+      "district": "North Tripura",
+      "total_volume": 1072,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tripura",
+      "district": "Sepahijala",
+      "total_volume": 1151,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tripura",
+      "district": "South Tripura",
+      "total_volume": 1354,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tripura",
+      "district": "Unakoti",
+      "total_volume": 460,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Tripura",
+      "district": "West Tripura",
+      "total_volume": 2038,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Agra",
+      "total_volume": 17219,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Aligarh",
+      "total_volume": 14416,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Ambedkar Nagar",
+      "total_volume": 3906,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Amethi",
+      "total_volume": 3946,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Amroha",
+      "total_volume": 5666,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Auraiya",
+      "total_volume": 2186,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Ayodhya",
+      "total_volume": 5114,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Azamgarh",
+      "total_volume": 6996,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Baghpat",
+      "total_volume": 3636,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Bagpat",
+      "total_volume": 0,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Bahraich",
+      "total_volume": 16978,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Ballia",
+      "total_volume": 4116,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Balrampur",
+      "total_volume": 4417,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Banda",
+      "total_volume": 5028,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Bara Banki",
+      "total_volume": 5868,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Barabanki",
+      "total_volume": 1453,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Bareilly",
+      "total_volume": 17794,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Basti",
+      "total_volume": 4903,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Bhadohi",
+      "total_volume": 269,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Bijnor",
+      "total_volume": 13008,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Budaun",
+      "total_volume": 8122,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Bulandshahar",
+      "total_volume": 115,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Bulandshahr",
+      "total_volume": 9364,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Chandauli",
+      "total_volume": 4580,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Chitrakoot",
+      "total_volume": 2965,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Deoria",
+      "total_volume": 4814,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Etah",
+      "total_volume": 6919,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Etawah",
+      "total_volume": 4289,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Farrukhabad",
+      "total_volume": 2926,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Fatehpur",
+      "total_volume": 6751,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Firozabad",
+      "total_volume": 7374,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Gautam Buddha Nagar",
+      "total_volume": 9639,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Ghaziabad",
+      "total_volume": 12377,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Ghazipur",
+      "total_volume": 4394,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Gonda",
+      "total_volume": 7773,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Gorakhpur",
+      "total_volume": 7879,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Hamirpur",
+      "total_volume": 2067,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Hapur",
+      "total_volume": 4491,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Hardoi",
+      "total_volume": 12903,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Hathras",
+      "total_volume": 3897,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Jalaun",
+      "total_volume": 2916,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Jaunpur",
+      "total_volume": 5616,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Jhansi",
+      "total_volume": 4641,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Jyotiba Phule Nagar",
+      "total_volume": 61,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Kannauj",
+      "total_volume": 3183,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Kanpur Dehat",
+      "total_volume": 4215,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Kanpur Nagar",
+      "total_volume": 12102,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Kasganj",
+      "total_volume": 3364,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Kaushambi",
+      "total_volume": 4425,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Kheri",
+      "total_volume": 11737,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Kushinagar",
+      "total_volume": 5277,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Lalitpur",
+      "total_volume": 3448,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Lucknow",
+      "total_volume": 14193,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Maharajganj",
+      "total_volume": 6606,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Mahoba",
+      "total_volume": 1991,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Mahrajganj",
+      "total_volume": 10,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Mainpuri",
+      "total_volume": 5243,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Mathura",
+      "total_volume": 5980,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Mau",
+      "total_volume": 2637,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Meerut",
+      "total_volume": 14429,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Mirzapur",
+      "total_volume": 3544,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Moradabad",
+      "total_volume": 15414,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Muzaffarnagar",
+      "total_volume": 7374,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Pilibhit",
+      "total_volume": 9004,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Pratapgarh",
+      "total_volume": 5922,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Prayagraj",
+      "total_volume": 8913,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Rae Bareli",
+      "total_volume": 5854,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Raebareli",
+      "total_volume": 0,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Rampur",
+      "total_volume": 12353,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Saharanpur",
+      "total_volume": 13807,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Sambhal",
+      "total_volume": 4861,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Sant Kabir Nagar",
+      "total_volume": 2826,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Sant Ravidas Nagar",
+      "total_volume": 1873,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Sant Ravidas Nagar Bhadohi",
+      "total_volume": 37,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Shahjahanpur",
+      "total_volume": 13258,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Shamli",
+      "total_volume": 5587,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Shravasti",
+      "total_volume": 2931,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Siddharth Nagar",
+      "total_volume": 1755,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Siddharthnagar",
+      "total_volume": 5274,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Sitapur",
+      "total_volume": 16985,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Sonbhadra",
+      "total_volume": 3011,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Sultanpur",
+      "total_volume": 5597,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Unnao",
+      "total_volume": 10205,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttar Pradesh",
+      "district": "Varanasi",
+      "total_volume": 9930,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Almora",
+      "total_volume": 1236,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Bageshwar",
+      "total_volume": 677,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Chamoli",
+      "total_volume": 1013,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Champawat",
+      "total_volume": 770,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Dehradun",
+      "total_volume": 7931,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Garhwal",
+      "total_volume": 52,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Hardwar",
+      "total_volume": 4858,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Nainital",
+      "total_volume": 3493,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Pauri Garhwal",
+      "total_volume": 1691,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Pithoragarh",
+      "total_volume": 1074,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Rudraprayag",
+      "total_volume": 874,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Tehri Garhwal",
+      "total_volume": 2457,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Udham Singh Nagar",
+      "total_volume": 5110,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "Uttarakhand",
+      "district": "Uttarkashi",
+      "total_volume": 983,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Alipurduar",
+      "total_volume": 1959,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Bankura",
+      "total_volume": 9233,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "West Bengal",
+      "district": "Barddhaman",
+      "total_volume": 12830,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "Bardhaman",
+      "total_volume": 1348,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Birbhum",
+      "total_volume": 13468,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "Burdwan",
+      "total_volume": 2,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Dakshin Dinajpur",
+      "total_volume": 6198,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "West Bengal",
+      "district": "Darjeeling",
+      "total_volume": 5277,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "West Bengal",
+      "district": "East Midnapore",
+      "total_volume": 1801,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Haora",
+      "total_volume": 1945,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Hawrah",
+      "total_volume": 3,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Hooghly",
+      "total_volume": 11506,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "Howrah",
+      "total_volume": 8287,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "West Bengal",
+      "district": "Hugli",
+      "total_volume": 148,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Jalpaiguri",
+      "total_volume": 6212,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "West Bengal",
+      "district": "Jhargram",
+      "total_volume": 791,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Kalimpong",
+      "total_volume": 329,
+      "cluster_label": "Balanced Growth",
+      "cluster_id": 0
+    },
+    {
+      "state": "West Bengal",
+      "district": "Koch Bihar",
+      "total_volume": 12068,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "Kolkata",
+      "total_volume": 5751,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "West Bengal",
+      "district": "Malda",
+      "total_volume": 13063,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "Medinipur",
+      "total_volume": 26,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Murshidabad",
+      "total_volume": 31528,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "Nadia",
+      "total_volume": 14092,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "North 24 Parganas",
+      "total_volume": 27782,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "North Dinajpur",
+      "total_volume": 263,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Paschim Bardhaman",
+      "total_volume": 958,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Paschim Medinipur",
+      "total_volume": 14735,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "Purba Bardhaman",
+      "total_volume": 2651,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Purba Medinipur",
+      "total_volume": 13012,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "Purulia",
+      "total_volume": 10347,
+      "cluster_label": "Rapid Growth",
+      "cluster_id": 1
+    },
+    {
+      "state": "West Bengal",
+      "district": "South 24 Parganas",
+      "total_volume": 28714,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "South Dinajpur",
+      "total_volume": 375,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    },
+    {
+      "state": "West Bengal",
+      "district": "Uttar Dinajpur",
+      "total_volume": 25577,
+      "cluster_label": "Dormant",
+      "cluster_id": 3
+    },
+    {
+      "state": "West Bengal",
+      "district": "West Medinipur",
+      "total_volume": 1651,
+      "cluster_label": "Stable",
+      "cluster_id": 2
+    }
+  ],
+  "total_volume": 5435484.0,
+  "stats": {
+    "total_enrollments": 1006007,
+    "total_districts": 857,
+    "total_states": 36
+  }
+}
