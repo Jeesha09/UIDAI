@@ -1,6 +1,6 @@
 streamlit
-pandas
-numpy
+pandas==1.5.3
+numpy<2.0.0
 plotly
 scikit-learn
 statsmodels
@@ -9,5 +9,5 @@ networkx
 matplotlib
 seaborn
 google-generativeai
-pandasai<2.0.0
+pandasai==1.5.21
 pyyaml
