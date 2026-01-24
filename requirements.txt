@@ -9,6 +9,5 @@ networkx
 matplotlib
 seaborn
 google-generativeai
-pandasai
+pandasai<2.0.0
 pyyaml
-pandasai-lite-llm
