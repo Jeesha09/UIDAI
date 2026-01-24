@@ -809,9 +809,9 @@ try:
         
         progress_bar.progress(80, text="Finalizing...")
         
-        # Load CSV data ONLY for chatbot (if needed)
-        progress_bar.progress(90, text="Loading minimal data for chatbot...")
-        df_enrol, df_bio, df_demo = load_data()
+        # Initialize empty dataframes (CSV loading disabled for performance)
+        progress_bar.progress(90, text="Initializing chatbot components...")
+        df_enrol, df_bio, df_demo = pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
         
         progress_bar.progress(100, text="Complete!")
         progress_bar.empty()  # Remove progress bar
@@ -1112,7 +1112,7 @@ elif page == "Operations & Logistics":
 # --- PAGE 3: TRENDS ---
 elif page == "Trends & Forecasting":
     st.title("Trends & Predictive Analytics")
-    st.markdown(f"**Analyzing {len(df_enrol):,} enrollment records across {df_enrol['district'].nunique()} districts** • _Data loaded from cache_")
+    st.markdown("**Advanced predictive analytics and trend forecasting** • _Data loaded from cache_")
     
     # 30-Day Enrollment Forecast
     st.markdown("---")
